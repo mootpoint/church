@@ -36,7 +36,13 @@ minetest.register_node('cross:obsidian', {
 			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
 			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
 		}
-	}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+		},
+	},
 })
 
 minetest.register_craft({
@@ -67,7 +73,13 @@ minetest.register_node('cross:wood', {
 			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
 			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
 		}
-	}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+		},
+	},
 })
 
 minetest.register_craft({
@@ -99,7 +111,13 @@ minetest.register_node('cross:gold', {
 			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
 			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
 		}
-	}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+		},
+	},
 })
 
 minetest.register_craft({
@@ -131,7 +149,13 @@ minetest.register_node('cross:diamond', {
 			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
 			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
 		}
-	}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+		},
+	},
 })
 
 minetest.register_craft({
@@ -164,7 +188,13 @@ minetest.register_node('cross:mese', {
 			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
 			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
 		}
-	}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+		},
+	},
 })
 
 minetest.register_craft({
@@ -198,7 +228,13 @@ minetest.register_node('cross:stone', {
 			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
 			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
 		}
-	}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+		},
+	},
 })
 
 minetest.register_craft({
