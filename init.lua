@@ -176,3 +176,37 @@ minetest.register_craft({
 	}
 })
 
+-- stone cross suggested by napiophelios
+
+minetest.register_node('cross:stone', {
+	description = 'stone Cross',
+	tiles = {
+		'default_stone.png',
+		'default_stone.png',
+		'default_stone.png',
+		'default_stone.png',
+		'default_stone.png',
+		'default_stone.png',
+	},
+	groups = {oddly_breakable_by_hand = 2},
+	drawtype = 'nodebox',
+	paramtype = 'light',
+	light_source = 15,
+	node_box = {
+		type = 'fixed',
+		fixed = {
+			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
+			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
+		}
+	}
+})
+
+minetest.register_craft({
+	output = 'cross:stone',
+	recipe = {
+		{'', 'default:stone', ''},
+		{'group:wood', 'group:wood', 'group:wood'},
+		{'', 'group:wood', ''}
+	}
+})
+
