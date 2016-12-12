@@ -29,6 +29,7 @@ minetest.register_node('cross:obsidian', {
 	},
 	drawtype = 'nodebox',
 	paramtype = 'light',
+	paramtype2 = 'facedir',
 	groups = {oddly_breakable_by_hand = 2},
 	node_box = {
 		type = 'fixed',
@@ -66,6 +67,7 @@ minetest.register_node('cross:wood', {
 	},
 	drawtype = 'nodebox',
 	paramtype = 'light',
+	paramtype2 = 'facedir',
 	groups = {oddly_breakable_by_hand = 2},
 	node_box = {
 		type = 'fixed',
@@ -105,6 +107,7 @@ minetest.register_node('cross:gold', {
 	groups = {oddly_breakable_by_hand = 2},
 	drawtype = 'nodebox',
 	paramtype = 'light',
+	paramtype2 = 'facedir',
 	node_box = {
 		type = 'fixed',
 		fixed = {
@@ -143,6 +146,7 @@ minetest.register_node('cross:diamond', {
 	groups = {oddly_breakable_by_hand = 2},
 	drawtype = 'nodebox',
 	paramtype = 'light',
+	paramtype2 = 'facedir',
 	node_box = {
 		type = 'fixed',
 		fixed = {
@@ -181,6 +185,7 @@ minetest.register_node('cross:mese', {
 	groups = {oddly_breakable_by_hand = 2},
 	drawtype = 'nodebox',
 	paramtype = 'light',
+	paramtype2 = 'facedir',
 	light_source = 15,
 	node_box = {
 		type = 'fixed',
@@ -221,6 +226,7 @@ minetest.register_node('cross:stone', {
 	groups = {oddly_breakable_by_hand = 2},
 	drawtype = 'nodebox',
 	paramtype = 'light',
+	paramtype2 = 'facedir',
 	light_source = 15,
 	node_box = {
 		type = 'fixed',
