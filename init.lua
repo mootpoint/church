@@ -32,7 +32,7 @@ minetest.register_node('cross:wallcross_gold', {
 	is_ground_content = false,
 	buildable_to = false,
 	light_source = 7,
-	sounds = default.node_sound_metal_defaults(),
+--	sounds = default.node_sound_metal_defaults(),
 	on_rotate = screwdriver.rotate_simple, --no upside down crosses :)
 	node_box = {
 		type = 'fixed',
@@ -60,7 +60,7 @@ minetest.register_node('cross:wallcross_steel', {
 	is_ground_content = false,
 	buildable_to = false,
 	light_source = 11,
-	sounds = default.node_sound_metal_defaults(),
+	--sounds = default.node_sound_metal_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
@@ -90,7 +90,7 @@ minetest.register_node('cross:grave', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
-	sounds = default.node_sound_stone_defaults(),
+--	sounds = default.node_sound_stone_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
@@ -124,7 +124,7 @@ minetest.register_node('cross:grave_fancy', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
-	sounds = default.node_sound_stone_defaults(),
+--	sounds = default.node_sound_stone_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
@@ -157,7 +157,7 @@ minetest.register_node('cross:grave_simple', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
-	sounds = default.node_sound_stone_defaults(),
+--	sounds = default.node_sound_stone_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
@@ -177,7 +177,7 @@ minetest.register_node('cross:grave_simple', {
 	}
 })
 --Cross Standards
-cross.register_cross = function( basename, texture, description, craft_from, mat_sounds )
+cross.register_cross = function( basename, texture, description, craft_from)-- mat_sounds )
 local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
 
 	minetest.register_node('cross:cross_'..basename, {
@@ -192,7 +192,7 @@ local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
 		buildable_to = false,
 		on_rotate = screwdriver.rotate_simple,
 		groups = group_def,
-		sounds = mat_sounds,
+--		sounds = mat_sounds,
 		node_box = {
 			type = 'fixed',
 			fixed = {
@@ -313,13 +313,13 @@ minetest.register_craft({
 --------------------------
 -- Register Node Materials
 --------------------------
-cross.register_cross( 'diamond', 'default_diamond_block.png', 'Diamond', 'default:diamond', default.node_sound_stone_defaults())
-cross.register_cross( 'gold', 'default_gold_block.png', 'Gold', 'default:gold_ingot', default.node_sound_metal_defaults())
-cross.register_cross( 'mese', 'default_meselamp.png', 'Mese', 'default:mese_crystal', default.node_sound_stone_defaults())
-cross.register_cross( 'obsidian', 'default_obsidian.png', 'Obsidian', 'default:obsidian_shard', default.node_sound_stone_defaults())
-cross.register_cross( 'steel', 'default_steel_block.png', 'Steel', 'default:steel_ingot', default.node_sound_metal_defaults())
-cross.register_cross( 'stone', 'default_stone.png', 'Stone', 'default:stone', default.node_sound_stone_defaults())
-cross.register_cross( 'wood', 'default_pine_wood.png^[transformR90', 'Wood', 'default:stick', default.node_sound_wood_defaults())
+cross.register_cross( 'diamond', 'default_diamond_block.png', 'Diamond', 'default:diamond')-- default.node_sound_stone_defaults())
+cross.register_cross( 'gold', 'default_gold_block.png', 'Gold', 'default:gold_ingot') -- default.node_sound_metal_defaults())
+cross.register_cross( 'mese', 'default_meselamp.png', 'Mese', 'default:mese_crystal')-- default.node_sound_stone_defaults())
+cross.register_cross( 'obsidian', 'default_obsidian.png', 'Obsidian', 'default:obsidian_shard') -- default.node_sound_stone_defaults())
+cross.register_cross( 'steel', 'default_steel_block.png', 'Steel', 'default:steel_ingot') -- default.node_sound_metal_defaults())
+cross.register_cross( 'stone', 'default_stone.png', 'Stone', 'default:stone') -- default.node_sound_stone_defaults())
+cross.register_cross( 'wood', 'default_pine_wood.png^[transformR90', 'Wood', 'default:stick')-- default.node_sound_wood_defaults())
 
 -------------------
 -- Register Aliases
