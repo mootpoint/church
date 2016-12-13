@@ -1,5 +1,5 @@
 -- cross mod by Tucker Bamberg AKA 'mootpoint'
-
+--modified by Napiophelios
 --[[
 Copyright (C) 2016 Joseph 'Tucker' Bamberg
 This file is part of the cross mod
@@ -15,240 +15,318 @@ You should have received a copy of the GNU General Public License
 along with the cross mod.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 
-
--- obsidian cross
-minetest.register_node('cross:obsidian', {
-	description = 'Obsidian Cross',
-	tiles = {
-		'default_obsidian.png',
-		'default_obsidian.png',
-		'default_obsidian.png',
-		'default_obsidian.png',
-		'default_obsidian.png',
-		'default_obsidian.png',
-	},
+screwdriver = screwdriver or {}
+cross = {}
+--------------------
+-- Node Registration
+--------------------
+--Hanging Wall Crosses
+minetest.register_node('cross:wallcross_gold', {
+	description = 'Gold Wall Cross',
+	tiles = {'default_gold_block.png'},
+	groups = {oddly_breakable_by_hand = 3},
 	drawtype = 'nodebox',
 	paramtype = 'light',
 	paramtype2 = 'facedir',
-	groups = {oddly_breakable_by_hand = 2},
+	sunlight_propagates = true,
+	is_ground_content = false,
+	buildable_to = false,
+	light_source = 7,
+	sounds = default.node_sound_metal_defaults(),
+	on_rotate = screwdriver.rotate_simple, --no upside down crosses :)
 	node_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
-			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
+			{-0.0625, -0.4375, 0.4375, 0.0625, 0.4375, 0.5},
+			{-0.25, 0.0625, 0.4375, 0.25, 0.1875, 0.5},
 		}
 	},
 	selection_box = {
-		type = "fixed",
+		type = 'fixed',
 		fixed = {
-			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
-		},
-	},
-})
-
-minetest.register_craft({
-	output = 'cross:obsidian',
-	recipe = {
-		{'', 'default:obsidian_shard', ''},
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', 'group:wood', ''}
+			{-0.3125, -0.5, 0.375, 0.3125, 0.5, 0.5},
+		}
 	}
 })
 
-minetest.register_node('cross:wood', {
-	description = 'Wooden Cross',
-	tiles = {
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-	},
+minetest.register_node('cross:wallcross_steel', {
+	description = 'Steel Wall Cross',
+	tiles = {'default_steel_block.png'},
+	groups = {oddly_breakable_by_hand = 3},
 	drawtype = 'nodebox',
 	paramtype = 'light',
 	paramtype2 = 'facedir',
-	groups = {oddly_breakable_by_hand = 2},
+	sunlight_propagates = true,
+	is_ground_content = false,
+	buildable_to = false,
+	light_source = 11,
+	sounds = default.node_sound_metal_defaults(),
+	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
-			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
+			{-0.0625, -0.4375, 0.4375, 0.0625, 0.4375, 0.5},
+			{-0.25, 0.0625, 0.4375, 0.25, 0.1875, 0.5},
 		}
 	},
 	selection_box = {
-		type = "fixed",
+		type = 'fixed',
 		fixed = {
-			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
-		},
-	},
-})
-
-minetest.register_craft({
-	output = 'cross:wood',
-	recipe = {
-		{'', 'group:wood', ''},
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', 'group:wood', ''}
+			{-0.3125, -0.5, 0.375, 0.3125, 0.5, 0.5},
+		}
 	}
 })
-
-
-minetest.register_node('cross:gold', {
-	description = 'Golden Cross',
-	tiles = {
-		'default_gold_block.png',
-		'default_gold_block.png',
-		'default_gold_block.png',
-		'default_gold_block.png',
-		'default_gold_block.png',
-		'default_gold_block.png',
-	},
-	groups = {oddly_breakable_by_hand = 2},
+--Grave Markers
+minetest.register_node('cross:grave', {
+	description = 'Grave Stone',
+	tiles = {'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
+	'cross_grave_stone.png', 'cross_grave_stone_mossy.png',
+	'cross_grave_stone_mossy.png', 'cross_grave_stone.png'},
+	groups = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 },
 	drawtype = 'nodebox',
 	paramtype = 'light',
 	paramtype2 = 'facedir',
+	sunlight_propagates = true,
+	is_ground_content = false,
+	buildable_to = false,
+	--light_source = 1,
+	sounds = default.node_sound_stone_defaults(),
+	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
-			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
+			{-0.3125, -0.3125, -0.125, 0.3125, 0.3125, 0.125},
+			{-0.375, -0.4375, -0.1875, 0.375, -0.3125, 0.1875},
+			{-0.4375, -0.5, -0.25, 0.4375, -0.4375, 0.25},
+			{-0.25, 0.3125, -0.125, 0.25, 0.375, 0.125},
+			{-0.125, 0.375, -0.125, 0.125, 0.4375, 0.125},
 		}
 	},
 	selection_box = {
-		type = "fixed",
+		type = 'fixed',
 		fixed = {
-			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
-		},
-	},
-})
-
-minetest.register_craft({
-	output = 'cross:gold',
-	recipe = {
-		{'', 'default:gold_ingot', ''},
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', 'group:wood', ''}
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+			--{-0.5, -0.5, -0.3125, 0.5, 0.5, 0.3125},
+		}
 	}
 })
 
-
-minetest.register_node('cross:diamond', {
-	description = 'Diamond Cross',
-	tiles = {
-		'default_diamond_block.png',
-		'default_diamond_block.png',
-		'default_diamond_block.png',
-		'default_diamond_block.png',
-		'default_diamond_block.png',
-		'default_diamond_block.png',
-	},
-	groups = {oddly_breakable_by_hand = 2},
+minetest.register_node('cross:grave_fancy', {
+	description = 'Cemetary Cross',
+	tiles = {'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
+	'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
+	'cross_grave_stone_mossy.png', 'cross_grave_stone.png'},
+	groups = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 },
 	drawtype = 'nodebox',
 	paramtype = 'light',
 	paramtype2 = 'facedir',
+	sunlight_propagates = true,
+	is_ground_content = false,
+	buildable_to = false,
+	--light_source = 1,
+	sounds = default.node_sound_stone_defaults(),
+	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
-			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
+			{-0.125, -0.25, -0.125, 0.125, 0.5, 0.125},
+			{-0.3125, 0.0625, -0.125, 0.3125, 0.3125, 0.125},
+			{-0.1875, -0.375, -0.1875, 0.1875, -0.25, 0.1875},
+			{-0.3125, -0.5, -0.3125, 0.3125, -0.375, 0.3125},
 		}
 	},
 	selection_box = {
-		type = "fixed",
+		type = 'fixed',
 		fixed = {
-			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
-		},
-	},
-})
-
-minetest.register_craft({
-	output = 'cross:diamond',
-	recipe = {
-		{'', 'default:diamond', ''},
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', 'group:wood', ''}
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+			--{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
 	}
 })
 
-
-minetest.register_node('cross:mese', {
-	description = 'Mese Cross',
-	tiles = {
-		'default_meselamp.png',
-		'default_meselamp.png',
-		'default_meselamp.png',
-		'default_meselamp.png',
-		'default_meselamp.png',
-		'default_meselamp.png',
-	},
-	groups = {oddly_breakable_by_hand = 2},
+minetest.register_node('cross:grave_simple', {
+	description = 'Simple Cemetary Cross',
+	tiles = {'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
+	'cross_grave_stone.png', 'cross_grave_stone.png',
+	'cross_grave_stone_mossy.png', 'cross_grave_stone.png'},
+	groups = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 },
 	drawtype = 'nodebox',
 	paramtype = 'light',
 	paramtype2 = 'facedir',
-	light_source = 15,
+	sunlight_propagates = true,
+	is_ground_content = false,
+	buildable_to = false,
+	--light_source = 1,
+	sounds = default.node_sound_stone_defaults(),
+	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
-			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
+			{-0.0625, -0.375, -0.0625, 0.0625, 0.5, 0.0625},
+			{-0.25, 0.125, -0.0625, 0.25, 0.25, 0.0625},
+			{-0.125, -0.4375, -0.125, 0.125, -0.375, 0.125},
+			{-0.1875, -0.5, -0.1875, 0.1875, -0.4375, 0.1875},
 		}
 	},
 	selection_box = {
-		type = "fixed",
-		fixed = {
-			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
-		},
-	},
-})
-
-minetest.register_craft({
-	output = 'cross:mese',
-	recipe = {
-		{'', 'default:mese_crystal_fragment', ''},
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', 'group:wood', ''}
-	}
-})
-
--- stone cross suggested by napiophelios
-
-minetest.register_node('cross:stone', {
-	description = 'stone Cross',
-	tiles = {
-		'default_stone.png',
-		'default_stone.png',
-		'default_stone.png',
-		'default_stone.png',
-		'default_stone.png',
-		'default_stone.png',
-	},
-	groups = {oddly_breakable_by_hand = 2},
-	drawtype = 'nodebox',
-	paramtype = 'light',
-	paramtype2 = 'facedir',
-	light_source = 15,
-	node_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox1
-			{-0.375, 0.0625, -0.0625, 0.375, 0.1875, 0.0625}, -- NodeBox2
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+			--{-0.25, -0.5, -0.1875, 0.25, 0.5, 0.1875},
 		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
-		},
-	},
+	}
 })
+--Cross Standards
+cross.register_cross = function( basename, texture, description, craft_from, mat_sounds )
+local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
+
+	minetest.register_node('cross:cross_'..basename, {
+		description = 'Cross of ' ..description,
+		tiles = {texture },
+		drawtype = 'nodebox',
+		paramtype = 'light',
+		paramtype2 = 'facedir',
+		light_source = 7,
+		sunlight_propagates = true,
+		is_ground_content = false,
+		buildable_to = false,
+		on_rotate = screwdriver.rotate_simple,
+		groups = group_def,
+		sounds = mat_sounds,
+		node_box = {
+			type = 'fixed',
+			fixed = {
+				{-0.0625, -0.5, -0.0625, 0.0625, 0.4375, 0.0625},
+				{-0.25, 0.0625, -0.0625, 0.25, 0.1875, 0.0625},
+			}
+		},
+		selection_box = {
+			type = 'fixed',
+			fixed = {
+				{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+			},
+		},
+	})
+-----------
+-- Crafting
+-----------
+	minetest.register_craft({
+		output = 'cross:cross_'..basename,
+		recipe = {
+			{'', craft_from, ''},
+			{'default:stick', 'default:stick', 'default:stick'},
+			{'', 'default:stick', ''}
+		}
+	})
+
+end
 
 minetest.register_craft({
-	output = 'cross:stone',
+	output = 'cross:wallcross_gold',
 	recipe = {
-		{'', 'default:stone', ''},
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'', 'group:wood', ''}
+		{ '', '', '' },
+		{ '', 'cross:cross_gold', '' },
+		{ '', '', '' },
 	}
 })
 
+minetest.register_craft({
+	output = 'cross:wallcross_steel',
+	recipe = {
+		{ '', '','' },
+		{ '', 'cross:cross_steel','' },
+		{ '', '','' },
+	}
+})
+
+minetest.register_craft({
+	output = 'cross:grave',
+	recipe = {
+		{ '', 'group:stone', '' },
+		{ '', 'stairs:slab_cobble', '' },
+		{ '', '', '' },
+	}
+})
+
+minetest.register_craft({
+	output = 'cross:grave',
+	recipe = {
+		{ '', '', '' },
+		{ '', 'group:stone', '' },
+		{ '', 'stairs:slab_cobble', '' },
+	}
+})
+
+minetest.register_craft({
+	output = 'cross:grave_fancy',
+	recipe = {
+		{ '', 'cross:cross_stone', '' },
+		{ '', 'stairs:slab_cobble', '' },
+		{ '', '', '' },
+	}
+})
+
+minetest.register_craft({
+	output = 'cross:grave_fancy',
+	recipe = {
+		{ '', '', '' },
+		{ '', 'cross:cross_stone', '' },
+		{ '', 'stairs:slab_cobble', '' },
+	}
+})
+
+minetest.register_craft({
+	output = 'cross:grave_simple',
+	recipe = {
+		{ '', 'cross:cross_stone', '' },
+		{ '', 'walls:cobble', '' },
+		{ '', '', '' },
+	}
+})
+
+minetest.register_craft({
+	output = 'cross:grave_simple',
+	recipe = {
+		{ '', '', '' },
+		{ '', 'cross:cross_stone', '' },
+		{ '', 'walls:cobble', '' },
+	}
+})
+
+----------
+-- Cooking
+----------
+minetest.register_craft({
+	type = 'cooking',
+	output = 'default:gold_ingot',
+	recipe = 'cross:wallcross_gold',
+	cooktime = 5,
+})
+
+minetest.register_craft({
+	type = 'cooking',
+	output = 'default:steel_ingot',
+	recipe = 'cross:wallcross_steel',
+	cooktime = 5,
+})
+
+--------------------------
+-- Register Node Materials
+--------------------------
+cross.register_cross( 'diamond', 'default_diamond_block.png', 'Diamond', 'default:diamond', default.node_sound_stone_defaults())
+cross.register_cross( 'gold', 'default_gold_block.png', 'Gold', 'default:gold_ingot', default.node_sound_metal_defaults())
+cross.register_cross( 'mese', 'default_meselamp.png', 'Mese', 'default:mese_crystal', default.node_sound_stone_defaults())
+cross.register_cross( 'obsidian', 'default_obsidian.png', 'Obsidian', 'default:obsidian_shard', default.node_sound_stone_defaults())
+cross.register_cross( 'steel', 'default_steel_block.png', 'Steel', 'default:steel_ingot', default.node_sound_metal_defaults())
+cross.register_cross( 'stone', 'default_stone.png', 'Stone', 'default:stone', default.node_sound_stone_defaults())
+cross.register_cross( 'wood', 'default_pine_wood.png^[transformR90', 'Wood', 'default:stick', default.node_sound_wood_defaults())
+
+-------------------
+-- Register Aliases
+-------------------
+minetest.register_alias('cross:obsidian', 'cross:cross_obsidian')
+minetest.register_alias('cross:wood', 'cross:cross_wood')
+minetest.register_alias('cross:gold', 'cross:cross_gold')
+minetest.register_alias('cross:diamond', 'cross:cross_diamond')
+minetest.register_alias('cross:mese', 'cross:cross_mese')
+minetest.register_alias('cross:stone', 'cross:cross_stone')
