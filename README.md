@@ -18,13 +18,9 @@ This mod adds several decorative nodes
 
 =====================
 
-Cross mod requires
+For the new sounds portion in this mod check out the fork that Napiophelios has.
 
-Development Minetest Game 0.4.14
 
-(commit fa9a345 or later)
-
-for the new metal soundsFX.
 
 depends :
 
