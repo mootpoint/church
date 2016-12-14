@@ -113,13 +113,13 @@ local register_pew = function(name, def, wood)
 end
 
 	
-register_pew('cross:pew_acacia', {}, 'default_acacia_wood')
-register_pew('cross:pew_wood', {}, 'default_wood')
-register_pew('cross:pew_junglewood', {}, 'default_junglewood')
-register_pew('cross:pew_pine', {}, 'default_pine_wood')
+register_pew('church:pew_acacia', {}, 'default_acacia_wood')
+register_pew('church:pew_wood', {}, 'default_wood')
+register_pew('church:pew_junglewood', {}, 'default_junglewood')
+register_pew('church:pew_pine', {}, 'default_pine_wood')
 
 minetest.register_craft({
-	output = 'cross:pew_acacia_right',
+	output = 'church:pew_acacia_right',
 	recipe = {
 		{'', 'default:acacia_wood', ''},
 		{'stairs:stair_acacia_wood', 'stairs:stair_acacia_wood', ''},
@@ -129,7 +129,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_acacia_left',
+	output = 'church:pew_acacia_left',
 	recipe = {
 		{'default:acacia_wood', '', ''},
 		{'stairs:stair_acacia_wood', 'stairs:stair_acacia_wood', ''},
@@ -139,7 +139,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_acacia_middle',
+	output = 'church:pew_acacia_middle',
 	recipe = {
 		{'', '', ''},
 		{'stairs:stair_acacia_wood', 'stairs:stair_acacia_wood', ''},
@@ -148,7 +148,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'cross:pew_wood_right',
+	output = 'church:pew_wood_right',
 	recipe = {
 		{'', 'default:wood', ''},
 		{'stairs:stair_wood', 'stairs:stair_wood', ''},
@@ -158,7 +158,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_wood_left',
+	output = 'church:pew_wood_left',
 	recipe = {
 		{'default:wood', '', ''},
 		{'stairs:stair_wood', 'stairs:stair_wood', ''},
@@ -168,7 +168,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_wood_middle',
+	output = 'church:pew_wood_middle',
 	recipe = {
 		{'', '', ''},
 		{'stairs:stair_wood', 'stairs:stair_wood', ''},
@@ -177,7 +177,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'cross:pew_junglewood_right',
+	output = 'church:pew_junglewood_right',
 	recipe = {
 		{'', 'default:junglewood', ''},
 		{'stairs:stair_junglewood', 'stairs:stair_junglewood', ''},
@@ -187,7 +187,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_junglewood_left',
+	output = 'church:pew_junglewood_left',
 	recipe = {
 		{'default:junglewood', '', ''},
 		{'stairs:stair_junglewood', 'stairs:stair_junglewood', ''},
@@ -197,7 +197,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_junglewood_middle',
+	output = 'church:pew_junglewood_middle',
 	recipe = {
 		{'', '', ''},
 		{'stairs:stair_junglewood', 'stairs:stair_junglewood', ''},
@@ -206,7 +206,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'cross:pew_pine_right',
+	output = 'church:pew_pine_right',
 	recipe = {
 		{'', 'default:pine_wood', ''},
 		{'stairs:stair_pine_wood', 'stairs:stair_pine_wood', ''},
@@ -216,7 +216,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_pine_left',
+	output = 'church:pew_pine_left',
 	recipe = {
 		{'default:pine_wood', '', ''},
 		{'stairs:stair_pine_wood', 'stairs:stair_pine_wood', ''},
@@ -226,7 +226,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'cross:pew_pine_middle',
+	output = 'church:pew_pine_middle',
 	recipe = {
 		{'', '', ''},
 		{'stairs:stair_pine_wood', 'stairs:stair_pine_wood', ''},
