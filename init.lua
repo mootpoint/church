@@ -15,6 +15,13 @@ You should have received a copy of the GNU General Public License
 along with the cross mod.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 
+
+
+local load_time_start = os.clock()
+
+local modpath = minetest.get_modpath('cross')
+
+
 screwdriver = screwdriver or {}
 cross = {}
 --------------------
@@ -330,3 +337,15 @@ minetest.register_alias('cross:gold', 'cross:cross_gold')
 minetest.register_alias('cross:diamond', 'cross:cross_diamond')
 minetest.register_alias('cross:mese', 'cross:cross_mese')
 minetest.register_alias('cross:stone', 'cross:cross_stone')
+
+
+
+dofile(modpath..'/pews.lua')
+
+minetest.log(
+	'action',
+	string.format(
+		'['..minetest.get_current_modname()..'] loaded in %.3fs',
+		os.clock() - load_time_start
+	)
+)
