@@ -83,106 +83,6 @@ minetest.register_node('church:wallcross_steel', {
 		}
 	}
 })
---Grave Markers
-minetest.register_node('church:grave', {
-	description = 'Grave Stone',
-	tiles = {'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
-	'cross_grave_stone.png', 'cross_grave_stone_mossy.png',
-	'cross_grave_stone_mossy.png', 'cross_grave_stone.png'},
-	groups = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 },
-	drawtype = 'nodebox',
-	paramtype = 'light',
-	paramtype2 = 'facedir',
-	sunlight_propagates = true,
-	is_ground_content = false,
-	buildable_to = false,
-	--light_source = 1,
---	sounds = default.node_sound_stone_defaults(),
-	on_rotate = screwdriver.rotate_simple,
-	node_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.3125, -0.3125, -0.125, 0.3125, 0.3125, 0.125},
-			{-0.375, -0.4375, -0.1875, 0.375, -0.3125, 0.1875},
-			{-0.4375, -0.5, -0.25, 0.4375, -0.4375, 0.25},
-			{-0.25, 0.3125, -0.125, 0.25, 0.375, 0.125},
-			{-0.125, 0.375, -0.125, 0.125, 0.4375, 0.125},
-		}
-	},
-	selection_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			--{-0.5, -0.5, -0.3125, 0.5, 0.5, 0.3125},
-		}
-	}
-})
-
-minetest.register_node('church:grave_fancy', {
-	description = 'Cemetary Cross',
-	tiles = {'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
-	'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
-	'cross_grave_stone_mossy.png', 'cross_grave_stone.png'},
-	groups = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 },
-	drawtype = 'nodebox',
-	paramtype = 'light',
-	paramtype2 = 'facedir',
-	sunlight_propagates = true,
-	is_ground_content = false,
-	buildable_to = false,
-	--light_source = 1,
---	sounds = default.node_sound_stone_defaults(),
-	on_rotate = screwdriver.rotate_simple,
-	node_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.125, -0.25, -0.125, 0.125, 0.5, 0.125},
-			{-0.3125, 0.0625, -0.125, 0.3125, 0.3125, 0.125},
-			{-0.1875, -0.375, -0.1875, 0.1875, -0.25, 0.1875},
-			{-0.3125, -0.5, -0.3125, 0.3125, -0.375, 0.3125},
-		}
-	},
-	selection_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			--{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		}
-	}
-})
-
-minetest.register_node('church:grave_simple', {
-	description = 'Simple Cemetary Cross',
-	tiles = {'cross_grave_stone_mossy.png', 'cross_grave_stone.png',
-	'cross_grave_stone.png', 'cross_grave_stone.png',
-	'cross_grave_stone_mossy.png', 'cross_grave_stone.png'},
-	groups = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 },
-	drawtype = 'nodebox',
-	paramtype = 'light',
-	paramtype2 = 'facedir',
-	sunlight_propagates = true,
-	is_ground_content = false,
-	buildable_to = false,
-	--light_source = 1,
---	sounds = default.node_sound_stone_defaults(),
-	on_rotate = screwdriver.rotate_simple,
-	node_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.0625, -0.375, -0.0625, 0.0625, 0.5, 0.0625},
-			{-0.25, 0.125, -0.0625, 0.25, 0.25, 0.0625},
-			{-0.125, -0.4375, -0.125, 0.125, -0.375, 0.125},
-			{-0.1875, -0.5, -0.1875, 0.1875, -0.4375, 0.1875},
-		}
-	},
-	selection_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			--{-0.25, -0.5, -0.1875, 0.25, 0.5, 0.1875},
-		}
-	}
-})
 --Cross Standards
 cross.register_cross = function( basename, texture, description, craft_from)-- mat_sounds )
 local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
@@ -255,41 +155,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = 'church:grave',
-	recipe = {
-		{ '', '', '' },
-		{ '', 'group:stone', '' },
-		{ '', 'stairs:slab_cobble', '' },
-	}
-})
-
-minetest.register_craft({
-	output = 'church:grave_fancy',
-	recipe = {
-		{ '', 'church:cross_stone', '' },
-		{ '', 'stairs:slab_cobble', '' },
-		{ '', '', '' },
-	}
-})
-
-minetest.register_craft({
-	output = 'church:grave_fancy',
-	recipe = {
-		{ '', '', '' },
-		{ '', 'church:cross_stone', '' },
-		{ '', 'stairs:slab_cobble', '' },
-	}
-})
-
-minetest.register_craft({
-	output = 'church:grave_simple',
-	recipe = {
-		{ '', 'church:cross_stone', '' },
-		{ '', 'walls:cobble', '' },
-		{ '', '', '' },
-	}
-})
 
 minetest.register_craft({
 	output = 'church:grave_simple',
@@ -339,9 +204,6 @@ minetest.register_alias('church:mese', 'church:cross_mese')
 minetest.register_alias('church:stone', 'church:cross_stone')
 
 
-
-dofile(modpath..'/pews.lua')
-dofile(modpath..'/podium.lua')
 
 minetest.log(
 	'action',
