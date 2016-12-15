@@ -28,7 +28,7 @@ cross = {}
 -- Node Registration
 --------------------
 --Hanging Wall Crosses
-minetest.register_node('church:wallcross_gold', {
+minetest.register_node('cross:wallcross_gold', {
 	description = 'Gold Wall Cross',
 	tiles = {'default_gold_block.png'},
 	groups = {oddly_breakable_by_hand = 3},
@@ -56,7 +56,7 @@ minetest.register_node('church:wallcross_gold', {
 	}
 })
 
-minetest.register_node('church:wallcross_steel', {
+minetest.register_node('cross:wallcross_steel', {
 	description = 'Steel Wall Cross',
 	tiles = {'default_steel_block.png'},
 	groups = {oddly_breakable_by_hand = 3},
@@ -87,7 +87,7 @@ minetest.register_node('church:wallcross_steel', {
 cross.register_cross = function( basename, texture, description, craft_from)-- mat_sounds )
 local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
 
-	minetest.register_node('church:cross_'..basename, {
+	minetest.register_node('cross:cross_'..basename, {
 		description = 'Cross of ' ..description,
 		tiles = {texture },
 		drawtype = 'nodebox',
@@ -118,7 +118,7 @@ local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
 -- Crafting
 -----------
 	minetest.register_craft({
-		output = 'church:cross_'..basename,
+		output = 'cross:cross_'..basename,
 		recipe = {
 			{'', craft_from, ''},
 			{'default:stick', 'default:stick', 'default:stick'},
@@ -129,25 +129,25 @@ local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
 end
 
 minetest.register_craft({
-	output = 'church:wallcross_gold',
+	output = 'cross:wallcross_gold',
 	recipe = {
 		{ '', '', '' },
-		{ '', 'church:cross_gold', '' },
+		{ '', 'cross:cross_gold', '' },
 		{ '', '', '' },
 	}
 })
 
 minetest.register_craft({
-	output = 'church:wallcross_steel',
+	output = 'cross:wallcross_steel',
 	recipe = {
 		{ '', '','' },
-		{ '', 'church:cross_steel','' },
+		{ '', 'cross:cross_steel','' },
 		{ '', '','' },
 	}
 })
 
 minetest.register_craft({
-	output = 'church:grave',
+	output = 'cross:grave',
 	recipe = {
 		{ '', 'group:stone', '' },
 		{ '', 'stairs:slab_cobble', '' },
@@ -157,10 +157,10 @@ minetest.register_craft({
 
 
 minetest.register_craft({
-	output = 'church:grave_simple',
+	output = 'cross:grave_simple',
 	recipe = {
 		{ '', '', '' },
-		{ '', 'church:cross_stone', '' },
+		{ '', 'cross:cross_stone', '' },
 		{ '', 'walls:cobble', '' },
 	}
 })
@@ -171,14 +171,14 @@ minetest.register_craft({
 minetest.register_craft({
 	type = 'cooking',
 	output = 'default:gold_ingot',
-	recipe = 'church:wallcross_gold',
+	recipe = 'cross:wallcross_gold',
 	cooktime = 5,
 })
 
 minetest.register_craft({
 	type = 'cooking',
 	output = 'default:steel_ingot',
-	recipe = 'church:wallcross_steel',
+	recipe = 'cross:wallcross_steel',
 	cooktime = 5,
 })
 
@@ -196,12 +196,12 @@ cross.register_cross( 'wood', 'default_pine_wood.png^[transformR90', 'Wood', 'de
 -------------------
 -- Register Aliases
 -------------------
-minetest.register_alias('church:obsidian', 'church:cross_obsidian')
-minetest.register_alias('church:wood', 'church:cross_wood')
-minetest.register_alias('church:gold', 'church:cross_gold')
-minetest.register_alias('church:diamond', 'church:cross_diamond')
-minetest.register_alias('church:mese', 'church:cross_mese')
-minetest.register_alias('church:stone', 'church:cross_stone')
+minetest.register_alias('cross:obsidian', 'cross:cross_obsidian')
+minetest.register_alias('cross:wood', 'cross:cross_wood')
+minetest.register_alias('cross:gold', 'cross:cross_gold')
+minetest.register_alias('cross:diamond', 'cross:cross_diamond')
+minetest.register_alias('cross:mese', 'cross:cross_mese')
+minetest.register_alias('cross:stone', 'cross:cross_stone')
 
 
 

@@ -16,21 +16,19 @@ along with the podium mod.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 
 -- Part of the church Modpack
-
-minetest.register_node('podium:podium_bottom_wood', {
-	description = 'Wooden Podium Bottom',
-	tiles = {
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png'
-	},
-	drawtype = 'nodebox',
-	paramtype = 'light',
-	paramtype2 = 'facedir',
-	node_box = {
+local register_podium_bottom = function(name, def, texture)
+	def.tiles = {
+		texture,
+		texture,
+		texture,
+		texture,
+		texture,
+		texture,
+	}
+	def.drawtype = 'nodebox'
+	def.paramtype = 'light'
+	def.paramtype2 = 'facedir'
+	def.node_box = {
 		type = 'fixed',
 		fixed = {
 			{-0.375, -0.5, -0.375, 0.375, -0.3125, 0.375},
@@ -38,23 +36,29 @@ minetest.register_node('podium:podium_bottom_wood', {
 			{-0.125, -0.5, -0.125, 0.125, 0.5, 0.125},
 		}
 	}
-})
+	def.selection_box = {
+		type = 'fixed',
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
+	}
+	def.groups = {snappy = 2, oddly_breakable_by_hand = 3,}
+	minetest.register_node(name, def)
+end 
 
-
-minetest.register_node('podium:podium_top_wood', {
-	description = 'Wooden Podium Top',
-	tiles = {
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png',
-		'default_wood.png'
-	},
-	drawtype = 'nodebox',
-	paramtype = 'light',
-	paramtype2 = 'facedir',
-	node_box = {
+local register_podium_top = function(name, def, texture)
+	def.tiles = {
+		texture,
+		texture,
+		texture,
+		texture,
+		texture,
+		texture,
+	}
+	def.drawtype = 'nodebox'
+	def.paramtype = 'light'
+	def.paramtype2 = 'facedir'
+	def.node_box = {
 		type = 'fixed',
 		fixed = {
 			{-0.125, -0.5, -0.125, 0.125, -0.0625, 0.125},
@@ -68,5 +72,24 @@ minetest.register_node('podium:podium_top_wood', {
 			{0.0625, -0.125, -0.5, 0.125, -0.0625, 0.5},
 		}
 	}
-})
+	def.selection_box = {
+		type = 'fixed',
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
+	}
+	def.groups = {snappy = 2, oddly_breakable_by_hand = 3,}
+	minetest.register_node(name, def)
+end 
+register_podium_bottom('podium:podium_bottom_wood', {description = 'podium bottom wood'}, 'default_wood.png')
+register_podium_bottom('podium:podium_bottom_pine', {description = 'podium bottom pine'}, 'default_pine_wood.png')
+register_podium_bottom('podium:podium_bottom_acacia', {description = 'podium bottom acacia'}, 'default_acacia_wood.png')
+register_podium_bottom('podium:podium_bottom_junglewood', {description = 'podium bottom junglewood'}, 'default_junglewood.png')
+
+register_podium_top('podium:podium_top_wood', {description = 'podium top wood'}, 'default_wood.png')
+register_podium_top('podium:podium_top_pine', {description = 'podium top pine'}, 'default_pine_wood.png')
+register_podium_top('podium:podium_top_acacia', {description = 'podium top acacia'}, 'default_acacia_wood.png')
+register_podium_top('podium:podium_top_junglewood', {description = 'podium top acacia'}, 'default_junglewood.png')
+
+
 
