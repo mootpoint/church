@@ -85,11 +85,13 @@ register_podium_bottom('podium:podium_bottom_wood', {description = 'podium botto
 register_podium_bottom('podium:podium_bottom_pine', {description = 'podium bottom pine'}, 'default_pine_wood.png')
 register_podium_bottom('podium:podium_bottom_acacia', {description = 'podium bottom acacia'}, 'default_acacia_wood.png')
 register_podium_bottom('podium:podium_bottom_junglewood', {description = 'podium bottom junglewood'}, 'default_junglewood.png')
+register_podium_bottom('podium:podium_bottom_aspen', {description = 'podium bottom aspen'}, 'default_aspen_wood.png')
 
 register_podium_top('podium:podium_top_wood', {description = 'podium top wood'}, 'default_wood.png')
 register_podium_top('podium:podium_top_pine', {description = 'podium top pine'}, 'default_pine_wood.png')
 register_podium_top('podium:podium_top_acacia', {description = 'podium top acacia'}, 'default_acacia_wood.png')
 register_podium_top('podium:podium_top_junglewood', {description = 'podium top acacia'}, 'default_junglewood.png')
+register_podium_top('podium:podium_top_aspen', {description = 'podium top aspen'}, 'default_aspen_wood.png')
 
 
 

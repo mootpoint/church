@@ -117,6 +117,37 @@ register_pew('pews:pew_acacia', {}, 'default_acacia_wood')
 register_pew('pews:pew_wood', {}, 'default_wood')
 register_pew('pews:pew_junglewood', {}, 'default_junglewood')
 register_pew('pews:pew_pine', {}, 'default_pine_wood')
+register_pew('pews:pew_aspen', {}, 'default_aspen_wood')
+
+minetest.register_craft({
+	output = 'pews:pew_aspen_right',
+	recipe = {
+		{'', 'default:aspen_wood', ''},
+		{'stairs:stair_aspen_wood', 'stairs:stair_aspen_wood', ''},
+		{'', '', ''},
+	},
+})
+
+
+minetest.register_craft({
+	output = 'pews:pew_aspen_left',
+	recipe = {
+		{'default:aspen_wood', '', ''},
+		{'stairs:stair_aspen_wood', 'stairs:stair_aspen_wood', ''},
+		{'', '', ''},
+	},
+})
+
+
+minetest.register_craft({
+	output = 'pews:pew_aspen_middle',
+	recipe = {
+		{'', '', ''},
+		{'stairs:stair_aspen_wood', 'stairs:stair_aspen_wood', ''},
+		{'', '', ''},
+	},
+})
+
 
 minetest.register_craft({
 	output = 'pews:pew_acacia_right',
