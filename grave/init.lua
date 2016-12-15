@@ -15,13 +15,14 @@ You should have received a copy of the GNU General Public License
 along with the grave mod.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 
+-- big thanks to pyrollo for the grave marker text
 ------------------------------
---Part of the grave Modpack--
+--Part of the church Modpack--
 ------------------------------
 local load_time_start = os.clock()
 screwdriver = screwdriver or {}
 grave = {}
-
+display_lib.register_display_entity("grave:text")
 --Grave Markers
 minetest.register_node('grave:grave', {
 	description = 'Grave Stone',
@@ -37,7 +38,6 @@ minetest.register_node('grave:grave', {
 	buildable_to = false,
 	--light_source = 1,
 --	sounds = default.node_sound_stone_defaults(),
-	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
 		fixed = {
@@ -54,8 +54,38 @@ minetest.register_node('grave:grave', {
 			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
 			--{-0.5, -0.5, -0.3125, 0.5, 0.5, 0.3125},
 		}
-	}
+	},
+	display_entities = {
+		["grave:text"] = {
+			on_display_update = font_lib.on_display_update,
+			depth = -2/16-0.001, height = 2/16,
+			size = { x = 14/16, y = 12/16 },
+			resolution = { x = 144, y = 64 },
+			maxlines = 3,
+			},
+		},
+	on_place = display_lib.on_place,
+	on_construct = 	function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec", "size[6,4]"..
+		"textarea[0.5,0.7;5.5,2;display_text;Displayed text (3 lines max);${display_text}]"..
+									"button_exit[2,3;2,1;ok;Write]")
+		display_lib.on_construct(pos)
+	end,
+	on_destruct = display_lib.on_destruct,
+	on_rotate = display_lib.on_rotate,
+	on_receive_fields = function(pos, formname, fields, player)
+		if not minetest.is_protected(pos, player:get_player_name()) then
+			local meta = minetest.get_meta(pos)
+			if fields and fields.ok then
+				meta:set_string("display_text", fields.display_text)
+				meta:set_string("infotext", "\""..fields.display_text.."\"")
+				display_lib.update_entities(pos)
+			end
+		end
+	end,
 })
+
 
 minetest.register_node('grave:grave_fancy', {
 	description = 'Cemetary Cross',

@@ -2,3 +2,5 @@ default
 stairs
 walls
 cross
+display_lib
+font_lib
