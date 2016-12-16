@@ -104,48 +104,97 @@ bell.restore_bell_data();
 
 
 minetest.register_node("bell:bell", {
-    description = "bell",
-    node_placement_prediction = "",
-	tiles = {"bell_bell.png"},
+	description = "bell",
+	node_placement_prediction = "",
+	drawtype = "nodebox",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.125, 0.4375, -0.125, 0.125, 0.5, 0.125},
+			{-0.125, 0.375, 0.0625, -0.0625, 0.4375, 0.125},
+			{0.0625, 0.375, -0.125, 0.125, 0.4375, -0.0625},
+			{-0.125, 0.375, -0.125, -0.0625, 0.4375, -0.0625},
+			{0.0625, 0.375, 0.0625, 0.125, 0.4375, 0.125},
+			{-0.125, 0.3125, -0.125, 0.125, 0.375, 0.125},
+			{-0.25, 0.25, 0.125, 0.25, 0.3125, 0.25},
+			{-0.25, 0.25, -0.25, 0.25, 0.3125, -0.125},
+			{-0.25, 0.25, -0.25, -0.125, 0.3125, 0.25},
+			{0.125, 0.25, -0.25, 0.25, 0.3125, 0.25},
+			{0.1875, 0.0625, -0.25, 0.25, 0.25, 0.25},
+			{-0.25, 0.0625, 0.1875, 0.25, 0.25, 0.25},
+			{-0.25, 0.0625, -0.25, -0.1875, 0.3125, 0.25},
+			{-0.25, 0.0625, -0.25, 0.25, 0.3125, -0.1875},
+			{0.25, -0.125, -0.3125, 0.3125, 0.0625, 0.3125},
+			{-0.3125, -0.125, 0.25, 0.3125, 0.0625, 0.3125},
+			{-0.3125, -0.125, -0.3125, -0.25, 0.0625, 0.3125},
+			{-0.3125, -0.125, -0.3125, 0.3125, 0.0625, -0.25},
+			{-0.375, -0.25, -0.375, -0.3125, -0.125, 0.375},
+			{0.3125, -0.25, -0.375, 0.375, -0.125, 0.375},
+			{-0.375, -0.25, -0.375, 0.375, -0.125, -0.3125},
+			{-0.375, -0.25, 0.3125, 0.375, -0.125, 0.375},
+			{-0.4375, -0.3125, -0.4375, -0.375, -0.25, 0.4375},
+			{-0.4375, -0.3125, 0.375, 0.4375, -0.25, 0.4375},
+			{0.375, -0.3125, -0.4375, 0.4375, -0.25, 0.4375},
+			{-0.4375, -0.3125, -0.4375, 0.4375, -0.25, -0.375},
+			{-0.5, -0.4375, 0.4375, 0.5, -0.3125, 0.5},
+			{-0.5, -0.4375, -0.5, 0.5, -0.3125, -0.4375},
+			{0.4375, -0.4375, -0.5, 0.5, -0.3125, 0.5},
+			{-0.5, -0.4375, -0.5, -0.4375, -0.3125, 0.5},
+			{-0.0625, -0.375, -0.0625, 0.0625, 0.3125, 0.0625}, -- bell ringer shaft
+			{-0.125, -0.375, -0.125, 0.125, -0.25, 0.125}, -- bellringer ball
+		}
+	},
+	tiles = {
+		"bell_top.png",
+		"bell_bottom.png",
+		"bell_bell2.png",
+		"bell_bell2.png",
+		"bell_bell2.png",		
+		"bell_bell2.png",
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
+	},
 	paramtype = "light",
 	is_ground_content = true,
-    inventory_image = 'bell_bell.png',
-    wield_image = 'bell_bell.png',
-    stack_max = 1,
-	drawtype = "plantlike",
-    on_punch = function (pos,node,puncher)
-        minetest.sound_play( "bell_bell",
-           { pos = pos, gain = 1.5, max_hear_distance = 300,});
-	minetest.chat_send_all(puncher:get_player_name().." has rung the bell!")
+	inventory_image = 'bell_bell.png',
+	wield_image = 'bell_bell.png',
+	stack_max = 1,
+	on_punch = function (pos,node,puncher)
+		minetest.sound_play( "bell_bell", { pos = pos, gain = 1.5, max_hear_distance = 300,});
+		-- minetest.chat_send_all(puncher:get_player_name().." has rung the bell!")
 	end,
 
-    after_place_node = function(pos, placer)
-       if( placer ~= nil ) then
-          minetest.chat_send_all(placer:get_player_name().." has placed a new bell at "..tostring( minetest.pos_to_string( pos )));
-       end
+	after_place_node = function(pos, placer)
+		if( placer ~= nil ) then
+			-- minetest.chat_send_all(placer:get_player_name().." has placed a new bell at "..tostring( minetest.pos_to_string( pos )));
+		end
        -- remember that there is a bell at that position
-       table.insert( bell_positions, pos );
-       bell.save_bell_positions( placer );
-    end,
+		table.insert( bell_positions, pos );
+		bell.save_bell_positions( placer );
+	end,
 
-    after_dig_node = function(pos, oldnode, oldmetadata, digger)
-       if( digger ~= nil ) then
-          minetest.chat_send_all(digger:get_player_name().." has removed the bell at "..tostring( minetest.pos_to_string( pos )));
-       end
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		if( digger ~= nil ) then
+			-- minetest.chat_send_all(digger:get_player_name().." has removed the bell at "..tostring( minetest.pos_to_string( pos )));
+		end
 
-       local found = 0;
-       -- actually remove the bell from the list
-       for i,v in ipairs( bell_positions ) do
-          if( v ~= nil and v.x == pos.x and v.y == pos.y and v.z == pos.z ) then
-             found = i;
-          end
-       end
-       -- actually remove the bell
-       if( found > 0 ) then
-          table.remove( bell_positions, found );
-          bell.save_bell_positions( digger );
-       end
-    end,
+		local found = 0;
+		-- actually remove the bell from the list
+		for i,v in ipairs( bell_positions ) do
+			if( v ~= nil and v.x == pos.x and v.y == pos.y and v.z == pos.z ) then
+				found = i;
+			end
+		end
+		-- actually remove the bell
+		if( found > 0 ) then
+			table.remove( bell_positions, found );
+			bell.save_bell_positions( digger );
+		end
+	end,
  
-    groups = {cracky=2},
+	groups = {cracky=2},
 })
