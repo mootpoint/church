@@ -36,7 +36,7 @@ candles.types = {
 		unlit = 'candles:candle_wall_copper',
 		lit = 'candles:candle_wall_copper_lit',
 		name = 'Copper Wall-Mount Candle',
-		ingot = 'moreores:copper_ingot',
+		ingot = 'default:copper_ingot',
 		image = 'candles_candle_copper'
 	},
 	{
@@ -50,14 +50,14 @@ candles.types = {
 		unlit = 'candles:candle_wall_gold',
 		lit = 'candles:candle_wall_gold_lit',
 		name = 'Gold Wall-Mount Candle',
-		ingot = 'moreores:gold_ingot',
+		ingot = 'default:gold_ingot',
 		image = 'candles_candle_gold'
 	},
 	{
 		unlit = 'candles:candle_wall_bronze',
 		lit = 'candles:candle_wall_bronze_lit',
 		name = 'Bronze Wall-Mount Candle',
-		ingot = 'moreores:bronze_ingot',
+		ingot = 'default:bronze_ingot',
 		image = 'candles_candle_bronze'
 	},
 	{
@@ -71,7 +71,7 @@ candles.types = {
 		unlit = 'candles:candelabra_copper',
 		lit = 'candles:candelabra_copper_lit',
 		name = 'Copper Candelebra',
-		ingot = 'moreores:copper_ingot',
+		ingot = 'default:copper_ingot',
 		image = 'candles_candelabra_copper'
 	},
 	{
@@ -85,20 +85,20 @@ candles.types = {
 		unlit = 'candles:candelabra_gold',
 		lit = 'candles:candelabra_gold_lit',
 		name = 'Gold Candelebra',
-		ingot = 'moreores:gold_ingot',
+		ingot = 'default:gold_ingot',
 		image = 'candles_candelabra_gold'
 	},
 	{
 		unlit = 'candles:candelabra_bronze',
 		lit = 'candles:candelabra_bronze_lit',
 		name = 'Bronze Candelebra',
-		ingot = 'moreores:bronze_ingot',
+		ingot = 'default:bronze_ingot',
 		image = 'candles_candelabra_bronze'
 	},
 }
 
 candles.find_lit = function(name)
-	for i,n in ipairs(candles.types) do
+	for i,n in pairs(candles.types) do
 		if n.unlit == name then
 			return n.lit
 		end
@@ -107,7 +107,7 @@ candles.find_lit = function(name)
 end
 
 candles.find_unlit = function(name)
-	for i,n in ipairs(candles.types) do
+	for i,n in pairs(candles.types) do
 		if n.lit == name then
 			return n.unlit
 		end
@@ -595,7 +595,7 @@ minetest.register_craftitem("candles:comb", {
 minetest.register_craft({
 	output = 'candles:candle',
 	recipe = {
-		{'candles:wax','farming:string','candles:wax'},
+		{'candles:wax','farming:cotton','candles:wax'},
 	}
 })
 
@@ -630,7 +630,7 @@ minetest.register_craft({
 	}
 })
 
-for i,n in ipairs(candles.types) do
+for i,n in pairs(candles.types) do
 	if n.ingot then
 		if string.find(n.unlit,'candelabra') then
 			candles.create_candelabra(n)
