@@ -20,7 +20,7 @@ local pews = {}
 local function sit(pos, node, clicker)
 	local player = clicker:get_player_name()
 	if default.player_attached[player] == true then
-		pos.y = pos.y - 0.5
+		pos.y = pos.y + 0.1
 		clicker:setpos(pos)
 		clicker:set_eye_offset({x=0, y=0, z=0}, {x=0, y=0, z=0})
 		clicker:set_physics_override(1, 1, 1)
