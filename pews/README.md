@@ -25,3 +25,16 @@ stairs-----> for crafting
 
 =====================
 
+Textures by Napiophelios
+
+License: CC-BY-SA 3.0
+
+- pews_acacia_wood_inv.png
+- pews_aspen_wood_inv.png
+- pews_junglewood_inv.png
+- pews_pine_wood_inv.png
+- pews_wood_inv.png
+
+
+=====================
+
