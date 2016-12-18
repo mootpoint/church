@@ -67,7 +67,7 @@ for _, row in ipairs(pews.materials) do
 	local tiles = row[3]
 	local craft_material = row[4]
 
-	minetest.register_node("pews:church_pew_left_"..name, {
+	minetest.register_node("church_pews:church_pew_left_"..name, {
 		drawtype = "nodebox",
 		description = desc.." Pew",
 		tiles = { tiles },
@@ -122,7 +122,7 @@ for _, row in ipairs(pews.materials) do
    end
   })
 
-	minetest.register_node("pews:church_pew_right_"..name, {
+	minetest.register_node("church_pews:church_pew_right_"..name, {
 		drawtype = "nodebox",
 		description = desc.." Pew",
 		tiles = { tiles },
@@ -177,7 +177,7 @@ for _, row in ipairs(pews.materials) do
    end
   })
 
-	minetest.register_node("pews:church_pew_" ..name, {
+	minetest.register_node("church_pews:church_pew_" ..name, {
 		drawtype = "nodebox",
 		description = desc.." Pew",
 		inventory_image = 'pews_' ..name.. '_inv.png',
@@ -223,10 +223,10 @@ for _, row in ipairs(pews.materials) do
 		local n1 = minetest.get_node(p1)
 		local n2 = minetest.get_node(p2)
 			if n1.name == "air" then
-				minetest.add_node(p1,{name="pews:church_pew_left_"..name, param2=minetest.dir_to_facedir(placer:get_look_dir())})
+				minetest.add_node(p1,{name="church_pews:church_pew_left_"..name, param2=minetest.dir_to_facedir(placer:get_look_dir())})
 			end
 			if n2.name == "air" then
-				minetest.add_node(p2,{name="pews:church_pew_right_"..name, param2=minetest.dir_to_facedir(placer:get_look_dir())})
+				minetest.add_node(p2,{name="church_pews:church_pew_right_"..name, param2=minetest.dir_to_facedir(placer:get_look_dir())})
 			end
 		end,
   on_rightclick = function(pos, node, clicker)
@@ -258,7 +258,7 @@ for _, row in ipairs(pews.materials) do
 ---------------------------
 	if craft_material then
 		minetest.register_craft({
-			output = 'pews:church_pew_' ..name.. ' 3',
+			output = 'church_pews:church_pew_' ..name.. ' 3',
 			recipe = {{'stairs:stair_' ..name, craft_material, 'stairs:stair_' ..name}}
 		})
 	end

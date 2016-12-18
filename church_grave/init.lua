@@ -22,9 +22,9 @@ along with the grave mod.  If not, see <http://www.gnu.org/licenses/>.
 local load_time_start = os.clock()
 screwdriver = screwdriver or {}
 grave = {}
-display_lib.register_display_entity("grave:text")
+display_lib.register_display_entity("church_grave:text")
 --Grave Markers
-minetest.register_node('grave:grave', {
+minetest.register_node('church_grave:grave', {
 	description = 'Grave Stone',
 	tiles = {'grave_stone_mossy.png', 'grave_stone.png',
 	'grave_stone.png', 'grave_stone_mossy.png',
@@ -56,7 +56,7 @@ minetest.register_node('grave:grave', {
 		}
 	},
 	display_entities = {
-		["grave:text"] = {
+		["church_grave:text"] = {
 			on_display_update = font_lib.on_display_update,
 			depth = -2/16-0.001, height = 2/16,
 			size = { x = 14/16, y = 12/16 },
@@ -87,7 +87,7 @@ minetest.register_node('grave:grave', {
 })
 
 
-minetest.register_node('grave:grave_fancy', {
+minetest.register_node('church_grave:grave_fancy', {
 	description = 'Cemetary Cross',
 	tiles = {'grave_stone_mossy.png', 'grave_stone.png',
 	'grave_stone_mossy.png', 'grave_stone.png',
@@ -120,7 +120,7 @@ minetest.register_node('grave:grave_fancy', {
 	}
 })
 
-minetest.register_node('grave:grave_simple', {
+minetest.register_node('church_grave:grave_simple', {
 	description = 'Simple Cemetary Cross',
 	tiles = {'grave_stone_mossy.png', 'grave_stone.png',
 	'grave_stone.png', 'grave_stone.png',
@@ -160,7 +160,7 @@ minetest.register_node('grave:grave_simple', {
 
 
 minetest.register_craft({
-	output = 'grave:grave',
+	output = 'church_grave:grave',
 	recipe = {
 		{ '', '', '' },
 		{ '', 'group:stone', '' },
@@ -169,7 +169,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'grave:grave_fancy',
+	output = 'church_grave:grave_fancy',
 	recipe = {
 		{ '', 'cross:stone', '' },
 		{ '', 'stairs:slab_cobble', '' },
@@ -178,7 +178,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'grave:grave_simple',
+	output = 'church_grave:grave_simple',
 	recipe = {
 		{ '', 'cross:stone', '' },
 		{ '', 'walls:cobble', '' },

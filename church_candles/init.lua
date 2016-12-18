@@ -1,7 +1,7 @@
 -- init.lua
--- candles minetest mod, by darkrose
+-- church_candles minetest mod, by darkrose 
 -- Copyright (C) Lisa Milne 2013 <lisa@ltmnet.com>
---
+-- Modified by mootpoint for the church modpack
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
 -- the Free Software Foundation, either version 2 of the License, or
@@ -19,78 +19,78 @@ local candles = {};
 
 candles.types = {
 	{
-		unlit = 'candles:candle',
-		lit = 'candles:candle_lit',
+		unlit = 'church_candles:candle',
+		lit = 'church_candles:candle_lit',
 		name = 'Candle',
 		ingot = nil,
 		image = 'candles_candle'
 	},
 	{
-		unlit = 'candles:candle_wall_steel',
-		lit = 'candles:candle_wall_steel_lit',
+		unlit = 'church_candles:candle_wall_steel',
+		lit = 'church_candles:candle_wall_steel_lit',
 		name = 'Steel Wall-Mount Candle',
 		ingot = 'default:steel_ingot',
 		image = 'candles_candle_steel'
 	},
 	{
-		unlit = 'candles:candle_wall_copper',
-		lit = 'candles:candle_wall_copper_lit',
+		unlit = 'church_candles:candle_wall_copper',
+		lit = 'church_candles:candle_wall_copper_lit',
 		name = 'Copper Wall-Mount Candle',
 		ingot = 'default:copper_ingot',
 		image = 'candles_candle_copper'
 	},
 	{
-		unlit = 'candles:candle_wall_silver',
-		lit = 'candles:candle_wall_silver_lit',
+		unlit = 'church_candles:candle_wall_silver',
+		lit = 'church_candles:candle_wall_silver_lit',
 		name = 'Silver Wall-Mount Candle',
 		ingot = 'moreores:silver_ingot',
 		image = 'candles_candle_silver'
 	},
 	{
-		unlit = 'candles:candle_wall_gold',
-		lit = 'candles:candle_wall_gold_lit',
+		unlit = 'church_candles:candle_wall_gold',
+		lit = 'church_candles:candle_wall_gold_lit',
 		name = 'Gold Wall-Mount Candle',
 		ingot = 'default:gold_ingot',
 		image = 'candles_candle_gold'
 	},
 	{
-		unlit = 'candles:candle_wall_bronze',
-		lit = 'candles:candle_wall_bronze_lit',
+		unlit = 'church_candles:candle_wall_bronze',
+		lit = 'church_candles:candle_wall_bronze_lit',
 		name = 'Bronze Wall-Mount Candle',
 		ingot = 'default:bronze_ingot',
 		image = 'candles_candle_bronze'
 	},
 	{
-		unlit = 'candles:candelabra_steel',
-		lit = 'candles:candelabra_steel_lit',
+		unlit = 'church_candles:candelabra_steel',
+		lit = 'church_candles:candelabra_steel_lit',
 		name = 'Steel Candelebra',
 		ingot = 'default:steel_ingot',
 		image = 'candles_candelabra_steel'
 	},
 	{
-		unlit = 'candles:candelabra_copper',
-		lit = 'candles:candelabra_copper_lit',
+		unlit = 'church_candles:candelabra_copper',
+		lit = 'church_candles:candelabra_copper_lit',
 		name = 'Copper Candelebra',
 		ingot = 'default:copper_ingot',
 		image = 'candles_candelabra_copper'
 	},
 	{
-		unlit = 'candles:candelabra_silver',
-		lit = 'candles:candelabra_silver_lit',
+		unlit = 'church_candles:candelabra_silver',
+		lit = 'church_candles:candelabra_silver_lit',
 		name = 'Silver Candelebra',
 		ingot = 'moreores:silver_ingot',
 		image = 'candles_candelabra_silver'
 	},
 	{
-		unlit = 'candles:candelabra_gold',
-		lit = 'candles:candelabra_gold_lit',
+		unlit = 'church_candles:candelabra_gold',
+		lit = 'church_candles:candelabra_gold_lit',
 		name = 'Gold Candelebra',
 		ingot = 'default:gold_ingot',
 		image = 'candles_candelabra_gold'
 	},
 	{
-		unlit = 'candles:candelabra_bronze',
-		lit = 'candles:candelabra_bronze_lit',
+		unlit = 'church_candles:candelabra_bronze',
+		lit = 'church_candles:candelabra_bronze_lit',
 		name = 'Bronze Candelebra',
 		ingot = 'default:bronze_ingot',
 		image = 'candles_candelabra_bronze'
@@ -155,12 +155,12 @@ candles.collect = function(pos, node, puncher)
 	else
 		comb = comb-1
 		meta:set_int('comb',comb)
-		puncher:get_inventory():add_item('main', 'candles:comb')
+		puncher:get_inventory():add_item('main', 'church_candles:comb')
 	end
 	if comb < 1 then
 		meta:set_string('angry','true')
 	end
-	if node.name == 'candles:hive' then
+	if node.name == 'church_candles:hive' then
 		if comb < 1 then
 			meta:set_string('infotext','Bee Hive: Angry')
 		else
@@ -264,7 +264,7 @@ candles.create_wall = function(ctype)
 	minetest.register_craft({
 		output = ctype.unlit,
 		recipe = {
-			{'candles:candle'},
+			{'church_candles:candle'},
 			{ctype.ingot},
 		}
 	})
@@ -373,13 +373,13 @@ candles.create_candelabra = function(ctype)
 	minetest.register_craft({
 		output = ctype.unlit,
 		recipe = {
-			{'candles:candle','candles:candle','candles:candle'},
+			{'church_candles:candle','church_candles:candle','church_candles:candle'},
 			{ctype.ingot,ctype.ingot,ctype.ingot},
 		}
 	})
 end
 
-minetest.register_node("candles:candle", {
+minetest.register_node("church_candles:candle", {
 	description = "Candle",
 	tile_images = {"candles_candle_top.png","candles_candle.png"},
 	drawtype = "nodebox",
@@ -412,14 +412,14 @@ minetest.register_node("candles:candle", {
 		local wdir = minetest.dir_to_wallmounted(dir)
 
 		if wdir == 1 then
-			minetest.env:add_node(above, {name = 'candles:candle'})
+			minetest.env:add_node(above, {name = 'church_candles:candle'})
 			itemstack:take_item()
 		end
 		return itemstack
 	end
 })
 
-minetest.register_node("candles:candle_lit", {
+minetest.register_node("church_candles:candle_lit", {
 	description = "Candle",
 	tile_images = {"candles_candle_top.png","candles_candle_lit.png"},
 	drawtype = "nodebox",
@@ -429,7 +429,7 @@ minetest.register_node("candles:candle_lit", {
 	sunlight_propagates = true,
 	walkable = false,
 	light_source = 8,
-	drop = 'candles:candle',
+	drop = 'church_candles:candle',
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -452,7 +452,7 @@ minetest.register_node("candles:candle_lit", {
 	end,
 })
 
-minetest.register_node("candles:hive_wild", {
+minetest.register_node("church_candles:hive_wild", {
 	description = "Wild Bee Hive",
 	tile_images = {"candles_hive_wild.png"},
 	drawtype = "plantlike",
@@ -495,7 +495,7 @@ minetest.register_node("candles:hive_wild", {
 	end
 })
 
-minetest.register_node("candles:hive", {
+minetest.register_node("church_candles:hive", {
 	description = "Bee Hive",
 	tile_images = {"candles_hive_top.png","candles_hive_bottom.png","candles_hive.png"},
 	drawtype = "nodebox",
@@ -544,7 +544,7 @@ minetest.register_node("candles:hive", {
 	end
 })
 
-minetest.register_node("candles:hive_empty", {
+minetest.register_node("church_candles:hive_empty", {
 	description = "Bee Hive",
 	tile_images = {"candles_hive_top.png","candles_hive_bottom.png","candles_hive.png"},
 	drawtype = "nodebox",
@@ -565,7 +565,7 @@ minetest.register_node("candles:hive_empty", {
 		},
 	},
 	on_timer = function(pos,elapsed)
-		minetest.env:add_node(pos,{name='candles:hive'})
+		minetest.env:add_node(pos,{name='church_candles:hive'})
 		return false
 	end,
 	on_construct = function(pos)
@@ -576,53 +576,53 @@ minetest.register_node("candles:hive_empty", {
 	end
 })
 
-minetest.register_craftitem("candles:wax", {
+minetest.register_craftitem("church_candles:wax", {
 	description = "Beeswax",
 	inventory_image = "candles_wax.png",
 })
 
-minetest.register_craftitem("candles:honey", {
+minetest.register_craftitem("church_candles:honey", {
 	description = "Honey",
 	inventory_image = "candles_honey.png",
 	on_use = minetest.item_eat(4),
 })
 
-minetest.register_craftitem("candles:comb", {
+minetest.register_craftitem("church_candles:comb", {
 	description = "Honey Comb",
 	inventory_image = "candles_comb.png",
 })
 
 minetest.register_craft({
-	output = 'candles:candle',
+	output = 'church_candles:candle',
 	recipe = {
-		{'candles:wax','farming:cotton','candles:wax'},
+		{'church_candles:wax','farming:cotton','church_candles:wax'},
 	}
 })
 
 minetest.register_craft({
-	output = 'candles:honey 2',
+	output = 'church_candles:honey 2',
 	recipe = {
-		{'candles:comb'},
+		{'church_candles:comb'},
 	}
 })
 
 minetest.register_craft({
 	type = 'cooking',
-	output = 'candles:wax 2',
-	recipe = 'candles:comb'
+	output = 'church_candles:wax 2',
+	recipe = 'church_candles:comb'
 })
 
 minetest.register_craft({
-	output = 'candles:hive',
+	output = 'church_candles:hive',
 	recipe = {
 		{'default:wood','default:wood','default:wood'},
-		{'default:stick','candles:hive_wild','default:stick'},
+		{'default:stick','church_candles:hive_wild','default:stick'},
 		{'default:stick','default:wood','default:stick'},
 	}
 })
 
 minetest.register_craft({
-	output = 'candles:hive_empty',
+	output = 'church_candles:hive_empty',
 	recipe = {
 		{'default:wood','default:wood','default:wood'},
 		{'default:stick','default:paper','default:stick'},
@@ -650,6 +650,6 @@ minetest.register_abm({
 		if not abv or abv.name ~= 'default:leaves' then
 			return nil
 		end
-		minetest.env:add_node(pos,{name='candles:hive_wild', param2 = 0})
+		minetest.env:add_node(pos,{name='church_candles:hive_wild', param2 = 0})
 	end
 })

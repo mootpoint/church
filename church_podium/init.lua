@@ -81,17 +81,17 @@ local register_podium_top = function(name, def, texture)
 	def.groups = {snappy = 2, oddly_breakable_by_hand = 3,}
 	minetest.register_node(name, def)
 end 
-register_podium_bottom('podium:podium_bottom_wood', {description = 'podium bottom wood'}, 'default_wood.png')
-register_podium_bottom('podium:podium_bottom_pine', {description = 'podium bottom pine'}, 'default_pine_wood.png')
-register_podium_bottom('podium:podium_bottom_acacia', {description = 'podium bottom acacia'}, 'default_acacia_wood.png')
-register_podium_bottom('podium:podium_bottom_junglewood', {description = 'podium bottom junglewood'}, 'default_junglewood.png')
-register_podium_bottom('podium:podium_bottom_aspen', {description = 'podium bottom aspen'}, 'default_aspen_wood.png')
+register_podium_bottom('church_podium:podium_bottom_wood', {description = 'podium bottom wood'}, 'default_wood.png')
+register_podium_bottom('church_podium:podium_bottom_pine', {description = 'podium bottom pine'}, 'default_pine_wood.png')
+register_podium_bottom('church_podium:podium_bottom_acacia', {description = 'podium bottom acacia'}, 'default_acacia_wood.png')
+register_podium_bottom('church_podium:podium_bottom_junglewood', {description = 'podium bottom junglewood'}, 'default_junglewood.png')
+register_podium_bottom('church_podium:podium_bottom_aspen', {description = 'podium bottom aspen'}, 'default_aspen_wood.png')
 
-register_podium_top('podium:podium_top_wood', {description = 'podium top wood'}, 'default_wood.png')
-register_podium_top('podium:podium_top_pine', {description = 'podium top pine'}, 'default_pine_wood.png')
-register_podium_top('podium:podium_top_acacia', {description = 'podium top acacia'}, 'default_acacia_wood.png')
-register_podium_top('podium:podium_top_junglewood', {description = 'podium top acacia'}, 'default_junglewood.png')
-register_podium_top('podium:podium_top_aspen', {description = 'podium top aspen'}, 'default_aspen_wood.png')
+register_podium_top('church_podium:podium_top_wood', {description = 'podium top wood'}, 'default_wood.png')
+register_podium_top('church_podium:podium_top_pine', {description = 'podium top pine'}, 'default_pine_wood.png')
+register_podium_top('church_podium:podium_top_acacia', {description = 'podium top acacia'}, 'default_acacia_wood.png')
+register_podium_top('church_podium:podium_top_junglewood', {description = 'podium top acacia'}, 'default_junglewood.png')
+register_podium_top('church_podium:podium_top_aspen', {description = 'podium top aspen'}, 'default_aspen_wood.png')
 
 
 
