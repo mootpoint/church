@@ -106,6 +106,157 @@ local function drop_stuff()
 	end
 end
 
+
+minetest.register_node("church_altar:altar_middle_locked", {
+  description = "Alter Locked",
+  tiles = {"church_altar_center_top.png", --top
+  "church_altar_center_top.png^[transformFX", --bottom
+  "church_altar_sides.png", --left
+  "church_altar_sides.png", --right
+  "church_altar_center.png^[transformFX",--back
+  "church_altar_center.png"}, --front
+  drawtype = 'nodebox',
+  paramtype = "light",
+  paramtype2 = "facedir",
+  sunlight_propagates = true,
+  is_ground_content = false,
+  groups = {cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+	after_dig_node = drop_stuff(),
+  node_box = {
+		type = 'fixed',
+		fixed = {
+			{-0.5, 0.3125, -0.5, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, -0.25, 0.5},
+			{-0.5, -0.125, -0.375, 0.5, 0.25, 0.375},
+			{-0.5, 0.25, -0.4375, 0.5, 0.3125, 0.4375},
+			{-0.5, -0.25, -0.4375, 0.5, -0.125, 0.4375},
+			{-0.25, -0.25, -0.5, 0.25, 0.3125, 0.5},
+		},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		},
+	},
+
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec", altar_formspec)
+		meta:set_string("infotext", "Altar")
+		local inv = meta:get_inventory()
+		inv:set_size("main", 8*1)
+	end,
+	
+	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
+		if not minetest.is_protected(pos, player:get_player_name()) then
+			return 1000
+		else
+			return 0
+		end
+
+	end,
+	
+	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+		minetest.log("action", player:get_player_name()..
+		" moves stuff in altar at "..minetest.pos_to_string(pos))
+	end,
+
+	on_metadata_inventory_put = function(pos, listname, index, stack, player)
+		minetest.log("action", player:get_player_name()..
+		" moves stuff to altar at "..minetest.pos_to_string(pos))
+	end,
+
+	on_metadata_inventory_take = function(pos, listname, index, stack, player)
+		minetest.log("action", player:get_player_name()..
+		" takes stuff from altar at "..minetest.pos_to_string(pos))
+	end,
+
+	on_blast = function(pos)
+		local drops = {}
+		default.get_inventory_drops(pos, "main", drops)
+		drops[#drops+1] = "church_altar:altar_middle"
+		minetest.remove_node(pos)
+		return drops
+	end,
+})
+
+minetest.register_node("church_altar:altar_middle_marble_locked", {
+  description = "Marble Alter",
+  tiles = {"church_altar_marble_center_top.png", --top
+  "church_altar_marble_center_top.png^[transformFX", --bottom
+  "church_altar_marble_sides.png", --left
+  "church_altar_marble_sides.png", --right
+  "church_altar_marble_center.png^[transformFX",--back
+  "church_altar_marble_center.png"}, --front
+  drawtype = 'nodebox',
+  paramtype = "light",
+  paramtype2 = "facedir",
+  sunlight_propagates = true,
+  is_ground_content = false,
+  groups = {cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+	after_dig_node = drop_stuff(),
+  node_box = {
+		type = 'fixed',
+		fixed = {
+			{-0.5, 0.3125, -0.5, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, -0.25, 0.5},
+			{-0.5, -0.125, -0.375, 0.5, 0.25, 0.375},
+			{-0.5, 0.25, -0.4375, 0.5, 0.3125, 0.4375},
+			{-0.5, -0.25, -0.4375, 0.5, -0.125, 0.4375},
+			{-0.25, -0.25, -0.5, 0.25, 0.3125, 0.5},
+		},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		},
+	},
+
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec", altar_formspec)
+		meta:set_string("infotext", "Altar")
+		local inv = meta:get_inventory()
+		inv:set_size("main", 8*1)
+	end,
+
+	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+		minetest.log("action", player:get_player_name()..
+		" moves stuff in marble altar at "..minetest.pos_to_string(pos))
+	end,
+
+	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
+		if not minetest.is_protected(pos, player:get_player_name()) then
+			return 1000
+		else
+			return 0
+		end
+
+	end,
+
+	on_metadata_inventory_put = function(pos, listname, index, stack, player)
+		minetest.log("action", player:get_player_name()..
+		" moves stuff to marble altar at "..minetest.pos_to_string(pos))
+	end,
+
+	on_metadata_inventory_take = function(pos, listname, index, stack, player)
+		minetest.log("action", player:get_player_name()..
+		" takes stuff from marble altar at "..minetest.pos_to_string(pos))
+	end,
+
+	on_blast = function(pos)
+		local drops = {}
+		default.get_inventory_drops(pos, "main", drops)
+		drops[#drops+1] = "church_altar:altar_middle_marble"
+		minetest.remove_node(pos)
+		return drops
+	end,
+})
+
 minetest.register_node("church_altar:altar_middle", {
   description = "Alter",
   tiles = {"church_altar_center_top.png", --top
@@ -219,12 +370,12 @@ minetest.register_node("church_altar:altar_middle_marble", {
 		" moves stuff in marble altar at "..minetest.pos_to_string(pos))
 	end,
 
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
+	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name()..
 		" moves stuff to marble altar at "..minetest.pos_to_string(pos))
 	end,
 
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
+	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name()..
 		" takes stuff from marble altar at "..minetest.pos_to_string(pos))
 	end,
@@ -288,6 +439,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'church_altar:altar_middle_locked',
+	recipe = {
+		{'', 'stairs:slab_stone', ''},
+		{'', 'group:stone', ''},
+		{'', 'default:steel_ingot', ''}
+	}
+})
+
+minetest.register_craft({
 	output = 'church_altar:altar_end_marble',
 	recipe = {
 		{'default:gold_lump', 'default:gold_lump', ''},
@@ -305,11 +465,22 @@ minetest.register_craft({
 	}
 })
 
+
 minetest.register_craft({
 	output = 'church_altar:altar_middle_marble',
 	recipe = {
 		{'default:gold_lump'},
 		{'default:coral_skeleton'},
 		{'default:gold_lump'}
+	}
+})
+
+
+minetest.register_craft({
+	output = 'church_altar:altar_middle_marble',
+	recipe = {
+		{'default:steel_ingot', 'default:gold_lump'},
+		{'', 'default:coral_skeleton'},
+		{'', 'default:gold_lump'}
 	}
 })
