@@ -6,19 +6,19 @@ screwdriver = screwdriver or {}
 
 minetest.register_node("church_altar:altar_end_stone", {
   description = "Stone Alter End",
-  tiles = {"church_altar_end_top.png", --top
-  "church_altar_end_top.png^[transformFXR180", --bottom
-  "church_altar_sides.png", --left
-  "church_altar_sides.png", --right
-  "church_altar_end.png^[transformFX",--back
-  "church_altar_end.png"}, --front
+  tiles = {"church_altar_stone_end_top.png", --top
+  "church_altar_stone_end_top.png^[transformFXR180", --bottom
+  "church_altar_stone_sides.png", --left
+  "church_altar_stone_sides.png", --right
+  "church_altar_stone_end.png^[transformFX",--back
+  "church_altar_stone_end.png"}, --front
   drawtype = 'nodebox',
   paramtype = "light",
   paramtype2 = "facedir",
   sunlight_propagates = true,
   is_ground_content = false,
   groups = {cracky = 3},
-	on_rotate = screwdriver.rotate_simple, 
+	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
   node_box = {
 		type = 'fixed',
@@ -53,7 +53,7 @@ minetest.register_node("church_altar:altar_end_marble", {
   sunlight_propagates = true,
   is_ground_content = false,
   groups = {cracky = 3},
-	on_rotate = screwdriver.rotate_simple, 
+	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
   node_box = {
 		type = 'fixed',
@@ -88,22 +88,22 @@ local altar_formspec =
 	"listring[current_player;main]"
 	default.get_hotbar_bg(0,4.85)
 
-	
+
 minetest.register_node("church_altar:altar_middle_stone", {
   description = "Stone Donation Alter",
-  tiles = {"church_altar_center_top.png", --top
-  "church_altar_center_top.png^[transformFX", --bottom
-  "church_altar_sides.png", --left
-  "church_altar_sides.png", --right
-  "church_altar_center.png^[transformFX",--back
-  "church_altar_center.png"}, --front
+  tiles = {"church_altar_stone_center_top.png", --top
+  "church_altar_stone_center_top.png^[transformFX", --bottom
+  "church_altar_stone_sides.png", --left
+  "church_altar_stone_sides.png", --right
+  "church_altar_stone_center.png^[transformFX",--back
+  "church_altar_stone_center.png"}, --front
   drawtype = 'nodebox',
   paramtype = "light",
   paramtype2 = "facedir",
   sunlight_propagates = true,
   is_ground_content = false,
   groups = {cracky = 3},
-	on_rotate = screwdriver.rotate_simple, 
+	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
   node_box = {
 		type = 'fixed',
@@ -130,13 +130,13 @@ minetest.register_node("church_altar:altar_middle_stone", {
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8*1)
 	end,
-	
+
 	can_dig = function(pos,player)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
-	
+
 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
 		if not minetest.is_protected(pos, player:get_player_name()) then
 			return 1000
@@ -145,7 +145,7 @@ minetest.register_node("church_altar:altar_middle_stone", {
 		end
 
 	end,
-	
+
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		minetest.log("action", player:get_player_name()..
 		" moves stuff in altar at "..minetest.pos_to_string(pos))
@@ -178,7 +178,7 @@ minetest.register_node("church_altar:altar_middle_marble", {
   sunlight_propagates = true,
   is_ground_content = false,
   groups = {cracky = 3},
-	on_rotate = screwdriver.rotate_simple, 
+	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
   node_box = {
 		type = 'fixed',
@@ -205,13 +205,13 @@ minetest.register_node("church_altar:altar_middle_marble", {
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8*1)
 	end,
-	
+
 	can_dig = function(pos,player)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
-	
+
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		minetest.log("action", player:get_player_name()..
 		" moves stuff in marble altar at "..minetest.pos_to_string(pos))
