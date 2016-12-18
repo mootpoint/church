@@ -171,7 +171,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'church_grave:grave_fancy',
 	recipe = {
-		{ '', 'cross:stone', '' },
+		{ '', 'church_cross:stone', '' },
 		{ '', 'stairs:slab_cobble', '' },
 		{ '', '', '' },
 	}
@@ -180,7 +180,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'church_grave:grave_simple',
 	recipe = {
-		{ '', 'cross:stone', '' },
+		{ '', 'church_cross:stone', '' },
 		{ '', 'walls:cobble', '' },
 		{ '', '', '' },
 	}
