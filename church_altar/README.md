@@ -34,13 +34,14 @@ License: CC-BY-SA 3.0
 - church_altar_center_top.png
 - church_altar_end.png
 - church_altar_end_top.png
-- church_altar_marble_center.png
-- church_altar_marble_center_top.png
-- church_altar_marble_end.png
-- church_altar_marble_end_top.png
-- church_altar_marble_sides.png
 - church_altar_sides.png
+- church_altar_marble_center.png*
+- church_altar_marble_center_top.png*
+- church_altar_marble_end.png*
+- church_altar_marble_end_top.png*
+- church_altar_marble_sides.png*
 
-*All marble tiles derived from darkage_marble.png by Master Gollum Licensed:WTFPL
+*All marble tiles derived from default_coral_skeleton.png
+by Pithydon (License: CC BY-SA 3.0)
 
 =====================
