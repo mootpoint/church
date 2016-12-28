@@ -30,17 +30,6 @@ Textures by Napiophelios
 
 License: CC-BY-SA 3.0
 
-- church_altar_marble_center.png*
-- church_altar_marble_center_top.png*
-- church_altar_marble_end.png*
-- church_altar_marble_end_top.png*
-- church_altar_marble_sides.png*
-- church_altar_stone_center.png
-- church_altar_stone_center_top.png
-- church_altar_stone_end.png
-- church_altar_stone_end_top.png
-- church_altar_stone_sides.png
-
 *All marble tiles derived from default_coral_skeleton.png
 by Pithydon (License: CC BY-SA 3.0)
 
