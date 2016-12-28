@@ -2,9 +2,9 @@
 
 #"Church Modpack" by Mootpoint
 
-Licensed under GPL2.0 or later,
+Licensed under GPLv3 or later,
 
-see http://www.gnu.org/licenses/gpl-2.0.html
+see http://www.gnu.org/licenses/gpl-3.0.html
 
 =====================
 
