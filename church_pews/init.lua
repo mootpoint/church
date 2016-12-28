@@ -1,8 +1,3 @@
---[[
-
---quirky sit function
-
-]]--
 
 screwdriver = screwdriver or {}
 
@@ -207,7 +202,7 @@ for _, row in ipairs(pews.materials) do
 		local wheretoplace = minetest.dir_to_facedir(placer:get_look_dir())
 		local p1 = {x=pos.x, y=pos.y, z=pos.z} -- player's left
 		local p2 = {x=pos.x, y=pos.y, z=pos.z} -- player's right
-		if wheretoplace == 0 then --facing direction z 
+		if wheretoplace == 0 then --facing direction z
 			p1 = {x=pos.x-1, y=pos.y, z=pos.z}  -- -x
 			p2 = {x=pos.x+1, y=pos.y, z=pos.z} -- x
 		elseif wheretoplace == 1 then -- facing direction x

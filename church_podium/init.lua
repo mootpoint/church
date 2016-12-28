@@ -1,97 +1,126 @@
--- podium mod for minetest
 
---[[
-Copyright (C) 2016 Joseph 'Tucker' Bamberg
-This file is part of the podium mod
-the podium mod is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-Stats is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with the podium mod.  If not, see <http://www.gnu.org/licenses/>.
-]]--
+screwdriver = screwdriver or {}
 
--- Part of the church Modpack
-local register_podium_bottom = function(name, def, texture)
-	def.tiles = {
-		texture,
-		texture,
-		texture,
-		texture,
-		texture,
-		texture,
-	}
-	def.drawtype = 'nodebox'
-	def.paramtype = 'light'
-	def.paramtype2 = 'facedir'
-	def.node_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.375, -0.5, -0.375, 0.375, -0.3125, 0.375},
-			{-0.3125, -0.5, -0.3125, 0.3125, -0.1875, 0.3125},
-			{-0.125, -0.5, -0.125, 0.125, 0.5, 0.125},
+local podiums = {}
+
+-------------------
+-- Register Nodes
+-------------------
+
+podiums.materials = {
+	{"acacia_wood", "Acacia Wood", "default_acacia_wood.png", "default:acacia_wood"},
+	{"aspen_wood", "Aspen Wood", "default_aspen_wood.png", "default:aspen_wood"},
+	{"junglewood", "Jungle Wood", "default_junglewood.png", "default:junglewood"},
+	{"pine_wood", "Pine Wood", "default_pine_wood.png", "default:pine_wood"},
+	{"wood", "Appletree Wood", "default_wood.png", "default:wood"},
+}
+
+for _, row in ipairs(podiums.materials) do
+	local name = row[1]
+	local desc = row[2]
+	local tiles = row[3]
+	local craft_material = row[4]
+
+	minetest.register_node(":church_podiums:podium_top_"..name, {
+		drawtype = "nodebox",
+		description = desc.." Podium",
+		tiles = { tiles },
+		paramtype = "light",
+		paramtype2 = "facedir",
+		sunlight_propagates = true,
+		is_ground_content = false,
+		drop = "",
+		groups = {oddly_breakable_by_hand= 2, choppy = 3, not_in_creative_inventory = 1},
+		sounds = default.node_sound_wood_defaults(),
+		on_rotate = screwdriver.rotate_simple,
+		node_box = {
+			type = "fixed",
+			fixed = {
+			{-0.5, -0.3125, -0.5, 0.5, -0.25, 0.5},
+			{-0.4375, -0.375, -0.4375, 0.4375, -0.3125, 0.4375},
+			{-0.375, -0.5, -0.4375, 0.375, -0.375, 0.375},
+			{-0.5, -0.25, 0.4375, 0.5, 0, 0.5},
+			{-0.5, -0.25, -0.4375, -0.4375, -0.1875, 0.4375},
+			{-0.5, -0.1875, -0.25, -0.4375, -0.125, 0.4375},
+			{-0.5, -0.125, -0.0625, -0.4375, -0.0625, 0.4375},
+			{-0.5, -0.0625, 0.125, -0.4375, 0, 0.4375},
+			{0.4375, -0.25, -0.4375, 0.5, -0.1875, 0.4375},
+			{0.4375, -0.1875, -0.25, 0.5, -0.125, 0.4375},
+			{0.4375, -0.125, -0.0625, 0.5, -0.0625, 0.4375},
+			{0.4375, -0.0625, 0.125, 0.5, 0, 0.4375},
+			},
+		},
+		selection_box = {
+			type = "fixed",
+			fixed = {
+				{0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+			},
 		}
-	}
-	def.selection_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		}
-	}
-	def.groups = {snappy = 2, oddly_breakable_by_hand = 3,}
-	minetest.register_node(name, def)
-end 
+  })
 
-local register_podium_top = function(name, def, texture)
-	def.tiles = {
-		texture,
-		texture,
-		texture,
-		texture,
-		texture,
-		texture,
-	}
-	def.drawtype = 'nodebox'
-	def.paramtype = 'light'
-	def.paramtype2 = 'facedir'
-	def.node_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.125, -0.5, -0.125, 0.125, -0.0625, 0.125},
-			{-0.125, -0.5, -0.125, 0.0625, -0.0625, 0.125},
-			{0.4375, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			{0.375, -0.4375, -0.5, 0.4375, -0.375, 0.5},
-			{0.3125, -0.375, -0.5, 0.375, -0.3125, 0.5},
-			{0.25, -0.3125, -0.5, 0.3125, -0.25, 0.5},
-			{0.1875, -0.25, -0.5, 0.25, -0.1875, 0.5},
-			{0.125, -0.1875, -0.5, 0.1875, -0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.125, -0.0625, 0.5},
-		}
-	}
-	def.selection_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		}
-	}
-	def.groups = {snappy = 2, oddly_breakable_by_hand = 3,}
-	minetest.register_node(name, def)
-end 
-register_podium_bottom('church_podium:podium_bottom_wood', {description = 'podium bottom wood'}, 'default_wood.png')
-register_podium_bottom('church_podium:podium_bottom_pine', {description = 'podium bottom pine'}, 'default_pine_wood.png')
-register_podium_bottom('church_podium:podium_bottom_acacia', {description = 'podium bottom acacia'}, 'default_acacia_wood.png')
-register_podium_bottom('church_podium:podium_bottom_junglewood', {description = 'podium bottom junglewood'}, 'default_junglewood.png')
-register_podium_bottom('church_podium:podium_bottom_aspen', {description = 'podium bottom aspen'}, 'default_aspen_wood.png')
+	minetest.register_node(":church_podiums:podium_bottom_" ..name, {
+		drawtype = "nodebox",
+		description = desc.." Pew",
+		inventory_image = "podiums_" ..name.. "_inv.png",
+		--wield_image = "podiums_" ..name.. "_inv.png",
+		tiles = { tiles },
+		paramtype = "light",
+		paramtype2 = "facedir",
+		sunlight_propagates = true,
+		is_ground_content = false,
+		groups = {oddly_breakable_by_hand= 2, choppy = 3},
+		sounds = default.node_sound_wood_defaults(),
+		on_rotate = screwdriver.rotate_simple,
+		node_box = {
+			type = "fixed",
+			fixed = {
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+			{-0.4375, -0.4375, -0.4375, 0.4375, -0.375, 0.4375},
+			{-0.375, -0.375, -0.4375, 0.375, -0.1875, 0.375},
+			{0.25, -0.1875, 0.3125, 0.375, 0.5, 0.375},
+			{-0.375, -0.5, 0.3125, -0.25, 0.5, 0.375},
+			{-0.375, -0.1875, 0.25, 0.375, 0.5, 0.3125},
+			{-0.3125, -0.1875, -0.4375, -0.25, 0.5, 0.25},
+			{0.25, -0.1875, -0.4375, 0.3125, 0.5, 0.3125},
+			{-0.25, 0.4375, -0.4375, 0.25, 0.5, 0.25},
+			{-0.25, 0.0625, -0.375, 0.25, 0.125, 0.25},
+			},
+		},
+		selection_box = {
+   type = "fixed",
+   fixed = {
+    {-0.5, -0.5, -0.5, 0.5, 1.125, 0.5},
+   },
+	},
+	after_place_node =function(pos, placer)
+	local p1 = {x=pos.x, y=pos.y+1, z=pos.z}
+	local n1 = minetest.get_node(p1)
+		if n1.name == "air" then
+			minetest.add_node(p1, {name="church_podiums:podium_top_" ..name, param2=minetest.dir_to_facedir(placer:get_look_dir())})
+		end
+	end,
+	after_destruct = function(pos,oldnode)
+	local node = minetest.get_node({x=pos.x,y=pos.y+1,z=pos.z})
+		if node.name == "church_podiums:podium_top_" ..name then
+			minetest.dig_node({x=pos.x,y=pos.y+1,z=pos.z})
+		end
+	end,
 
-register_podium_top('church_podium:podium_top_wood', {description = 'podium top wood'}, 'default_wood.png')
-register_podium_top('church_podium:podium_top_pine', {description = 'podium top pine'}, 'default_pine_wood.png')
-register_podium_top('church_podium:podium_top_acacia', {description = 'podium top acacia'}, 'default_acacia_wood.png')
-register_podium_top('church_podium:podium_top_junglewood', {description = 'podium top acacia'}, 'default_junglewood.png')
-register_podium_top('church_podium:podium_top_aspen', {description = 'podium top aspen'}, 'default_aspen_wood.png')
+	})
 
 
+---------------------------
+-- Register Craft Recipes
+---------------------------
+if craft_material then
+    minetest.register_craft({
+        output = "church_podiums:podium_bottom_" ..name,
+        recipe = {
+            {"stairs:slab_" ..name},
+            {craft_material},
+            {"stairs:slab_" ..name},
+        }
+    })
+end
 
+end

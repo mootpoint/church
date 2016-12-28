@@ -1,28 +1,11 @@
--- Grave mod written by mootpoint and Napiophelios
---[[
-Copyright (C) 2016 Joseph 'Tucker' Bamberg
-Copyright (C) 2016 -- for napiophelios
-This file is part of the grave mod
-the grave mod is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-Stats is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with the grave mod.  If not, see <http://www.gnu.org/licenses/>.
-]]--
-
--- big thanks to pyrollo for the grave marker text
-------------------------------
---Part of the church Modpack--
-------------------------------
 local load_time_start = os.clock()
+
 screwdriver = screwdriver or {}
+
 grave = {}
+
 display_lib.register_display_entity("church_grave:text")
+
 --Grave Markers
 minetest.register_node('church_grave:grave', {
 	description = 'Grave Stone',
@@ -37,7 +20,7 @@ minetest.register_node('church_grave:grave', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
---	sounds = default.node_sound_stone_defaults(),
+ sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = 'fixed',
 		fixed = {
@@ -100,7 +83,7 @@ minetest.register_node('church_grave:grave_fancy', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
---	sounds = default.node_sound_stone_defaults(),
+ sounds = default.node_sound_stone_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
@@ -133,7 +116,7 @@ minetest.register_node('church_grave:grave_simple', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
---	sounds = default.node_sound_stone_defaults(),
+ sounds = default.node_sound_stone_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
