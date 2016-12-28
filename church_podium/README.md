@@ -21,3 +21,8 @@ depends :
 - stairs----> for crafting
 
 =====================
+
+![Preview](https://raw.githubusercontent.com/Napiophelios/church/master/church_podium/screenshot.png)
+
+=====================
+

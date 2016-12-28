@@ -24,6 +24,8 @@ depends :
 
 =====================
 
+![Preview](https://raw.githubusercontent.com/Napiophelios/church/master/church_altar/screenshot.png)
+
 Textures by Napiophelios
 
 License: CC-BY-SA 3.0

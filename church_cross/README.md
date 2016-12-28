@@ -21,3 +21,8 @@ depends :
 - default----> for sounds and textures and crafting
 
 =====================
+
+![Preview](https://raw.githubusercontent.com/Napiophelios/church/master/church_cross/screenshot.png)
+
+=====================
+
