@@ -31,7 +31,6 @@ walls------> for crafting
 cross------> for crafting
 
 =====================
-![Preview](https://raw.githubusercontent.com/mootpoint/cross/master/screenshot.png)
 
 Textures by Napiophelios
 
