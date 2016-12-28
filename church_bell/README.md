@@ -29,7 +29,6 @@ You can ring a bell manually.
 
 depends :
 - default----> for sounds and textures and crafting
-- stairs-----> for crafting
 
 =====================
 
