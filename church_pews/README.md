@@ -23,10 +23,8 @@ This mod adds several church pews
 =====================
 
 depends :
-
-default----> for sounds and textures and crafting
-
-stairs-----> for crafting
+- default----> for sounds and textures and crafting
+- stairs-----> for crafting
 
 =====================
 

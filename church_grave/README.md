@@ -22,13 +22,10 @@ This mod adds new grave markers
 
 depends :
 
-default----> for sounds and textures and crafting
-
-stairs-----> for crafting
-
-walls------> for crafting
-
-cross------> for crafting
+- default----> for sounds and textures and crafting
+- stairs-----> for crafting
+- walls------> for crafting
+- cross------> for crafting
 
 =====================
 

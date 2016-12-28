@@ -16,10 +16,8 @@ https://forum.minetest.net/viewtopic.php?f=9&t=16029&sid=65c913208fd877b0d021969
 =====================
 
 depends :
-
-default----> for sounds and crafting
-
-dye-----> for crafting
+- default----> for sounds and crafting
+- dye-----> for crafting
 
 =====================
 

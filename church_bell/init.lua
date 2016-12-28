@@ -13,7 +13,7 @@ local church_bell_positions = {};
 
 
 church_bell.save_church_bell_positions = function( player )
-  
+
    str = minetest.serialize( ({ church_bell_data = church_bell_positions}) );
 
    local file, err = io.open( church_bell.church_bell_SAVE_FILE, 'wb');
@@ -41,14 +41,14 @@ church_bell.restore_church_bell_data = function()
    end
    local str = file:read();
    file:close();
-   
+
    local church_bell_positions_table = minetest.deserialize( str );
    if( church_bell_positions_table and church_bell_positions_table.church_bell_data ) then
      church_bell_positions = church_bell_positions_table.church_bell_data;
      print('[church_bell] Read positions of bells from savefile.');
    end
 end
-   
+
 
 -- actually ring the bell
 church_bell.ring_church_bell_once = function()
@@ -69,7 +69,7 @@ church_bell.ring_church_bell = function()
    local minute  = tonumber( os.date( '%M'));
    local stunde  = tonumber( os.date( '%I')); -- in 12h-format (a bell that rings 24x at once would not survive long...)
    local delay   = church_bell.RING_INTERVAL;
- 
+
    --print('[church_bells]It is now H:'..tostring( stunde )..' M:'..tostring(minute)..' S:'..tostring( sekunde ));
 
    --local datum = os.date( 'Stunde:%l Minute:%M Sekunde:%S');
@@ -106,65 +106,22 @@ church_bell.restore_church_bell_data();
 minetest.register_node('church_bell:iron', {
 	description = 'Iron Bell',
 	node_placement_prediction = '',
-	drawtype = 'nodebox',
-	node_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.125, 0.4375, -0.125, 0.125, 0.5, 0.125},
-			{-0.125, 0.375, 0.0625, -0.0625, 0.4375, 0.125},
-			{0.0625, 0.375, -0.125, 0.125, 0.4375, -0.0625},
-			{-0.125, 0.375, -0.125, -0.0625, 0.4375, -0.0625},
-			{0.0625, 0.375, 0.0625, 0.125, 0.4375, 0.125},
-			{-0.125, 0.3125, -0.125, 0.125, 0.375, 0.125},
-			{-0.25, 0.25, 0.125, 0.25, 0.3125, 0.25},
-			{-0.25, 0.25, -0.25, 0.25, 0.3125, -0.125},
-			{-0.25, 0.25, -0.25, -0.125, 0.3125, 0.25},
-			{0.125, 0.25, -0.25, 0.25, 0.3125, 0.25},
-			{0.1875, 0.0625, -0.25, 0.25, 0.25, 0.25},
-			{-0.25, 0.0625, 0.1875, 0.25, 0.25, 0.25},
-			{-0.25, 0.0625, -0.25, -0.1875, 0.3125, 0.25},
-			{-0.25, 0.0625, -0.25, 0.25, 0.3125, -0.1875},
-			{0.25, -0.125, -0.3125, 0.3125, 0.0625, 0.3125},
-			{-0.3125, -0.125, 0.25, 0.3125, 0.0625, 0.3125},
-			{-0.3125, -0.125, -0.3125, -0.25, 0.0625, 0.3125},
-			{-0.3125, -0.125, -0.3125, 0.3125, 0.0625, -0.25},
-			{-0.375, -0.25, -0.375, -0.3125, -0.125, 0.375},
-			{0.3125, -0.25, -0.375, 0.375, -0.125, 0.375},
-			{-0.375, -0.25, -0.375, 0.375, -0.125, -0.3125},
-			{-0.375, -0.25, 0.3125, 0.375, -0.125, 0.375},
-			{-0.4375, -0.3125, -0.4375, -0.375, -0.25, 0.4375},
-			{-0.4375, -0.3125, 0.375, 0.4375, -0.25, 0.4375},
-			{0.375, -0.3125, -0.4375, 0.4375, -0.25, 0.4375},
-			{-0.4375, -0.3125, -0.4375, 0.4375, -0.25, -0.375},
-			{-0.5, -0.4375, 0.4375, 0.5, -0.3125, 0.5},
-			{-0.5, -0.4375, -0.5, 0.5, -0.3125, -0.4375},
-			{0.4375, -0.4375, -0.5, 0.5, -0.3125, 0.5},
-			{-0.5, -0.4375, -0.5, -0.4375, -0.3125, 0.5},
-			{-0.0625, -0.375, -0.0625, 0.0625, 0.3125, 0.0625}, -- bell ringer shaft
-			{-0.125, -0.375, -0.125, 0.125, -0.25, 0.125}, -- bellringer ball
-		}
-	},
-	tiles = {
-		'church_bell_top_iron.png',
-		'church_bell_bottom_iron.png',
-		'church_bell_iron.png',
-		'church_bell_iron.png',
-		'church_bell_iron.png',	
-		'church_bell_iron.png',
-	},
+drawtype = 'mesh',
+	mesh = "church_bell.obj",
+	tiles = {'church_bell_iron.png'},
 	selection_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+			{-0.38, -0.31, -0.38, 0.38, 0.5, 0.38},
 		}
 	},
 	paramtype = 'light',
 	is_ground_content = true,
-	inventory_image = 'church_bell_iron.png',
-	wield_image = 'church_bell_iron.png',
+	inventory_image = 'church_bell_iron_inv.png',
+	wield_image = 'church_bell_iron_inv.png',
 	stack_max = 1,
 	on_punch = function (pos,node,puncher)
-		minetest.sound_play( 'church_bell', { pos = pos, gain = 1.5, max_hear_distance = 300,});
+		minetest.sound_play( 'church_bell_punch', { pos = pos, gain = 1.5, max_hear_distance = 300,});
 		-- minetest.chat_send_all(puncher:get_player_name()..' has rung the bell!')
 	end,
 
@@ -195,72 +152,29 @@ minetest.register_node('church_bell:iron', {
 			church_bell.save_church_bell_positions( digger );
 		end
 	end,
- 
+
 	groups = {cracky=2},
 })
 
 minetest.register_node('church_bell:gold', {
 	description = 'Gold Bell',
 	node_placement_prediction = '',
-	drawtype = 'nodebox',
-	node_box = {
-		type = 'fixed',
-		fixed = {
-			{-0.125, 0.4375, -0.125, 0.125, 0.5, 0.125},
-			{-0.125, 0.375, 0.0625, -0.0625, 0.4375, 0.125},
-			{0.0625, 0.375, -0.125, 0.125, 0.4375, -0.0625},
-			{-0.125, 0.375, -0.125, -0.0625, 0.4375, -0.0625},
-			{0.0625, 0.375, 0.0625, 0.125, 0.4375, 0.125},
-			{-0.125, 0.3125, -0.125, 0.125, 0.375, 0.125},
-			{-0.25, 0.25, 0.125, 0.25, 0.3125, 0.25},
-			{-0.25, 0.25, -0.25, 0.25, 0.3125, -0.125},
-			{-0.25, 0.25, -0.25, -0.125, 0.3125, 0.25},
-			{0.125, 0.25, -0.25, 0.25, 0.3125, 0.25},
-			{0.1875, 0.0625, -0.25, 0.25, 0.25, 0.25},
-			{-0.25, 0.0625, 0.1875, 0.25, 0.25, 0.25},
-			{-0.25, 0.0625, -0.25, -0.1875, 0.3125, 0.25},
-			{-0.25, 0.0625, -0.25, 0.25, 0.3125, -0.1875},
-			{0.25, -0.125, -0.3125, 0.3125, 0.0625, 0.3125},
-			{-0.3125, -0.125, 0.25, 0.3125, 0.0625, 0.3125},
-			{-0.3125, -0.125, -0.3125, -0.25, 0.0625, 0.3125},
-			{-0.3125, -0.125, -0.3125, 0.3125, 0.0625, -0.25},
-			{-0.375, -0.25, -0.375, -0.3125, -0.125, 0.375},
-			{0.3125, -0.25, -0.375, 0.375, -0.125, 0.375},
-			{-0.375, -0.25, -0.375, 0.375, -0.125, -0.3125},
-			{-0.375, -0.25, 0.3125, 0.375, -0.125, 0.375},
-			{-0.4375, -0.3125, -0.4375, -0.375, -0.25, 0.4375},
-			{-0.4375, -0.3125, 0.375, 0.4375, -0.25, 0.4375},
-			{0.375, -0.3125, -0.4375, 0.4375, -0.25, 0.4375},
-			{-0.4375, -0.3125, -0.4375, 0.4375, -0.25, -0.375},
-			{-0.5, -0.4375, 0.4375, 0.5, -0.3125, 0.5},
-			{-0.5, -0.4375, -0.5, 0.5, -0.3125, -0.4375},
-			{0.4375, -0.4375, -0.5, 0.5, -0.3125, 0.5},
-			{-0.5, -0.4375, -0.5, -0.4375, -0.3125, 0.5},
-			{-0.0625, -0.375, -0.0625, 0.0625, 0.3125, 0.0625}, -- bell ringer shaft
-			{-0.125, -0.375, -0.125, 0.125, -0.25, 0.125}, -- bellringer ball
-		}
-	},
-	tiles = {
-		'church_bell_gold_top.png',
-		'church_bell_gold_bottom.png',
-		'church_bell_gold.png',
-		'church_bell_gold.png',
-		'church_bell_gold.png',	
-		'church_bell_gold.png',
-	},
+drawtype = 'mesh',
+	mesh = "church_bell.obj",
+	tiles = {'church_bell_gold.png'},
 	selection_box = {
 		type = 'fixed',
 		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+			{-0.38, -0.31, -0.38, 0.38, 0.5, 0.38},
 		}
 	},
 	paramtype = 'light',
 	is_ground_content = true,
-	inventory_image = 'church_bell_gold.png',
-	wield_image = 'church_bell_gold.png',
+	inventory_image = 'church_bell_gold_inv.png',
+	wield_image = 'church_bell_gold_inv.png',
 	stack_max = 1,
 	on_punch = function (pos,node,puncher)
-		minetest.sound_play( 'church_bell', { pos = pos, gain = 1.5, max_hear_distance = 300,});
+		minetest.sound_play( 'church_bell_punch', { pos = pos, gain = 1.5, max_hear_distance = 300,});
 		-- minetest.chat_send_all(puncher:get_player_name()..' has rung the bell!')
 	end,
 
@@ -291,23 +205,23 @@ minetest.register_node('church_bell:gold', {
 			church_bell.save_church_bell_positions( digger );
 		end
 	end,
- 
+
 	groups = {cracky=2},
 })
 
 minetest.register_craft({
 	output = 'church_bell:gold',
 	recipe = {
-		{'', 'default:gold_lump', ''},
-		{'default:gold_lump', '', 'default:gold_lump'},
-		{'default:gold_lump', '', 'default:gold_lump'},
+		{'', 'default:gold_ingot', ''},
+		{'default:gold_ingot', '', 'default:gold_ingot'},
+		{'default:gold_ingot', '', 'default:gold_ingot'},
 	},
 })
 minetest.register_craft({
 	output = 'church_bell:iron',
 	recipe = {
-		{'', 'default:iron_lump', ''},
-		{'default:iron_lump', '', 'default:iron_lump'},
-		{'default:iron_lump', '', 'default:iron_lump'},
+		{'', 'default:iron_ingot', ''},
+		{'default:iron_ingot', '', 'default:iron_ingot'},
+		{'default:iron_ingot', '', 'default:iron_ingot'},
 	},
 })
