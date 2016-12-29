@@ -74,7 +74,7 @@ minetest.register_node("church_candles:hive_wild", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = true,
-	groups = {snappy = 3, oddly_breakable_by_hand = 2, flammable = 1, not_in_creative_inventory=1},
+	groups = {snappy = 3, oddly_breakable_by_hand = 2, flammable = 1, not_in_creative_inventory = 1},
     sounds = default.node_sound_leaves_defaults(),
 	drop = "church_candles:honey 2",
 	drop = {
@@ -104,7 +104,7 @@ minetest.register_node("church_candles:hive_wild", {
 --Artificial Hive
 minetest.register_node("church_candles:hive", {
 	description = "Artificial Hive",
-    tile_images = {"church_candles_hive_top.png","church_candles_hive_bottom.png",
+    tiles = {"church_candles_hive_top.png","church_candles_hive_bottom.png",
     "church_candles_hive.png","church_candles_hive.png",
     "church_candles_hive.png","church_candles_hive_front.png"},
     drawtype = "nodebox",
@@ -112,7 +112,7 @@ minetest.register_node("church_candles:hive", {
 	paramtype2 = "facedir",
 	place_param2 = 0,
 	on_rotate = screwdriver.rotate_simple,
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1, not_in_creative_inventory=1},
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, not_in_creative_inventory = 1},
 	sounds = default.node_sound_wood_defaults(),
 	node_box = {
 		type = "fixed",
@@ -161,7 +161,7 @@ minetest.register_node("church_candles:hive", {
 
 minetest.register_node("church_candles:hive_empty", {
 	description = "Artificial Hive (empty)",
-    tile_images = {"church_candles_hive_empty_top.png","church_candles_hive_empty_bottom.png",
+    tiles = {"church_candles_hive_empty_top.png","church_candles_hive_empty_bottom.png",
     "church_candles_hive_empty.png","church_candles_hive_empty.png",
     "church_candles_hive_empty.png","church_candles_hive_empty_front.png"},
     drawtype = "nodebox",
@@ -169,7 +169,7 @@ minetest.register_node("church_candles:hive_empty", {
 	paramtype2 = "facedir",
 	place_param2 = 0,
 	on_rotate = screwdriver.rotate_simple,
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 	sounds = default.node_sound_wood_defaults(),
 	node_box = {
 		type = "fixed",
@@ -250,7 +250,7 @@ minetest.register_node("church_candles:honeycomb_block", {
 	description = "Honeycomb Block",
 	inventory_image = "church_candles_honey_comb_block.png",
 	tiles = {"church_candles_honey_comb_block.png"},
-	groups = {snappy = 3, flammable = 2},
+	groups = {oddly_breakable_by_hand = 3, dig_immediate = 1},
 	sounds = default.node_sound_dirt_defaults(),
 })
 --Jar of Honey
@@ -280,7 +280,7 @@ minetest.register_node("church_candles:honey_jar", {
 			--{-0.25, -0.5, -0.25, 0.25, 0.4, 0.25}
 		},
 	},
-	groups = {vessel=1,dig_immediate=3,attached_node=1},
+	groups = {vessel = 1, dig_immediate = 3, attached_node = 1},
 	sounds = default.node_sound_glass_defaults(),
 	on_use = minetest.item_eat(10),
 })
@@ -298,7 +298,7 @@ minetest.register_node("church_candles:honey_bottled", {
 		type = "fixed",
 		fixed = {-0.25, -0.5, -0.25, 0.25, 0.4, 0.25}
 	},
-	groups = {vessel=1,dig_immediate=3,attached_node=1},
+	groups = {vessel = 1, dig_immediate = 3, attached_node = 1},
 	sounds = default.node_sound_glass_defaults(),
 	on_use = minetest.item_eat(6, "vessels:glass_bottle"),
 })
@@ -368,8 +368,8 @@ minetest.register_abm({
 minetest.register_abm({
 	nodenames = "default:apple",
 	neighbors = "default:leaves",
-	interval = 1200,
-	chance = 61,
+	interval = 12,
+	chance = 601,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		local abv = minetest.env:get_node({x=pos.x,y=pos.y+1,z=pos.z})
 		if not abv or abv.name ~= "default:leaves" then

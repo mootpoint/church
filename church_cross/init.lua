@@ -63,10 +63,10 @@ minetest.register_node('church_cross:wallcross_steel', {
 })
 --Cross Standards
 cross.register_cross = function( basename, texture, description, craft_from, mat_sounds )
-local group_def = {cracky = 3, oddly_breakable_by_hand = 2, choppy =1 };
+local group_def = {cracky = 3, oddly_breakable_by_hand = 2};
 
 	minetest.register_node('church_cross:cross_'..basename, {
-		description = 'Cross of ' ..description,
+		description = description.. ' Cross',
 		tiles = {texture },
 		drawtype = 'nodebox',
 		paramtype = 'light',

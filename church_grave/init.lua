@@ -1,4 +1,3 @@
-local load_time_start = os.clock()
 
 screwdriver = screwdriver or {}
 
@@ -20,7 +19,7 @@ minetest.register_node('church_grave:grave', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
- sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_stone_defaults(),
 	node_box = {
 		type = 'fixed',
 		fixed = {
@@ -35,7 +34,6 @@ minetest.register_node('church_grave:grave', {
 		type = 'fixed',
 		fixed = {
 			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			--{-0.5, -0.5, -0.3125, 0.5, 0.5, 0.3125},
 		}
 	},
 	display_entities = {
@@ -69,7 +67,6 @@ minetest.register_node('church_grave:grave', {
 	end,
 })
 
-
 minetest.register_node('church_grave:grave_fancy', {
 	description = 'Cemetary Cross',
 	tiles = {'grave_stone_mossy.png', 'grave_stone.png',
@@ -83,7 +80,7 @@ minetest.register_node('church_grave:grave_fancy', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
- sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_stone_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
@@ -98,7 +95,6 @@ minetest.register_node('church_grave:grave_fancy', {
 		type = 'fixed',
 		fixed = {
 			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			--{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		}
 	}
 })
@@ -116,7 +112,7 @@ minetest.register_node('church_grave:grave_simple', {
 	is_ground_content = false,
 	buildable_to = false,
 	--light_source = 1,
- sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_stone_defaults(),
 	on_rotate = screwdriver.rotate_simple,
 	node_box = {
 		type = 'fixed',
@@ -131,17 +127,13 @@ minetest.register_node('church_grave:grave_simple', {
 		type = 'fixed',
 		fixed = {
 			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			--{-0.25, -0.5, -0.1875, 0.25, 0.5, 0.1875},
 		}
 	}
 })
 
-
---------------------
---Crafting Recipes--
---------------------
-
-
+-----------
+--Crafting
+-----------
 minetest.register_craft({
 	output = 'church_grave:grave',
 	recipe = {
@@ -168,12 +160,3 @@ minetest.register_craft({
 		{ '', '', '' },
 	}
 })
-
-minetest.log(
-	'action',
-	string.format(
-		'['..minetest.get_current_modname()..'] loaded in %.3fs',
-		os.clock() - load_time_start
-	)
-)
-
