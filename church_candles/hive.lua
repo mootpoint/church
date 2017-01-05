@@ -76,7 +76,6 @@ minetest.register_node("church_candles:hive_wild", {
 	walkable = true,
 	groups = {snappy = 3, oddly_breakable_by_hand = 2, flammable = 1, not_in_creative_inventory = 1},
     sounds = default.node_sound_leaves_defaults(),
-	drop = "church_candles:honey 2",
 	drop = {
 		max_items = 1,
 		items = {
@@ -232,7 +231,7 @@ minetest.register_node("church_candles:busybees", {
 	diggable = false,
 	climbable = false,
 	buildable_to = true,
-	--groups = {not_in_creative_inventory =1},
+	groups = {not_in_creative_inventory =1},
 	on_punch = function(_, _, puncher, _)
 		local health = puncher:get_hp()
 		puncher:set_hp(health - 1)
