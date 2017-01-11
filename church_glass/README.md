@@ -1,6 +1,6 @@
 =====================
 
-#Minetest mod  "Church Glass" by Napiophelios
+#Minetest mod  "Church Glass"
 for  the "Church Modpack" by Mootpoint
 
 Licensed under GPLv3 or later,
