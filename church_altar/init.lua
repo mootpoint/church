@@ -1,26 +1,42 @@
+
 screwdriver = screwdriver or {}
+
+church_altar = {}
+
+--------------------
+-- Formspec
+--------------------
+local altar_formspec =
+	"size[8,5.25]"..
+	default.gui_bg..
+	default.gui_bg_img..
+	default.gui_slots..
+	"list[current_name;main;0,0;8,1;]"..
+	"list[current_player;main;0,1.5;8,4;]"..
+	"listring[current_name;main]" ..
+	"listring[current_player;main]"
+	default.get_hotbar_bg(0,4.85)
 
 --------------------
 -- Register Nodes
 --------------------
-
 minetest.register_node("church_altar:altar_end_stone", {
-  description = "Stone Alter End",
-  tiles = {"church_altar_stone_end_top.png", --top
-  "church_altar_stone_end_top.png^[transformFXR180", --bottom
-  "church_altar_stone_sides.png", --left
-  "church_altar_stone_sides.png", --right
-  "church_altar_stone_end.png^[transformFX",--back
-  "church_altar_stone_end.png"}, --front
-  drawtype = 'nodebox',
-  paramtype = "light",
-  paramtype2 = "facedir",
-  sunlight_propagates = true,
-  is_ground_content = false,
-  groups = {cracky = 3},
+	description = "Stone Alter End",
+	tiles = {"church_altar_stone_end_top.png",
+	"church_altar_stone_end_top.png^[transformFXR180",
+	"church_altar_stone_sides.png",
+	"church_altar_stone_sides.png",
+	"church_altar_stone_end.png^[transformFX",
+	"church_altar_stone_end.png"},
+	drawtype = 'nodebox',
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3},
 	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
-  node_box = {
+	node_box = {
 		type = 'fixed',
 		fixed = {
 			{-0.4375, 0.3125, -0.5, 0.5, 0.5, 0.5},
@@ -40,22 +56,22 @@ minetest.register_node("church_altar:altar_end_stone", {
 })
 
 minetest.register_node("church_altar:altar_end_marble", {
-  description = "Marble Alter End",
-  tiles = {"church_altar_marble_end_top.png", --top
-  "church_altar_marble_end_top.png^[transformFXR180", --bottom
-  "church_altar_marble_sides.png", --left
-  "church_altar_marble_sides.png", --right
-  "church_altar_marble_end.png^[transformFX",--back
-  "church_altar_marble_end.png"}, --front
-  drawtype = 'nodebox',
-  paramtype = "light",
-  paramtype2 = "facedir",
-  sunlight_propagates = true,
-  is_ground_content = false,
-  groups = {cracky = 3},
+	description = "Marble Alter End",
+	tiles = {"church_altar_marble_end_top.png",
+	"church_altar_marble_end_top.png^[transformFXR180",
+	"church_altar_marble_sides.png",
+	"church_altar_marble_sides.png",
+	"church_altar_marble_end.png^[transformFX",
+	"church_altar_marble_end.png"},
+	drawtype = 'nodebox',
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3},
 	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
-  node_box = {
+	node_box = {
 		type = 'fixed',
 		fixed = {
 			{-0.4375, 0.3125, -0.5, 0.5, 0.5, 0.5},
@@ -74,38 +90,23 @@ minetest.register_node("church_altar:altar_end_marble", {
 	},
 })
 
---------------------
--- Formspec
---------------------
-local altar_formspec =
-	"size[8,5.25]"..
-	default.gui_bg..
-	default.gui_bg_img..
-	default.gui_slots..
-	"list[current_name;main;0,0;8,1;]"..
-	"list[current_player;main;0,1.5;8,4;]"..
-	"listring[current_name;main]" ..
-	"listring[current_player;main]"
-	default.get_hotbar_bg(0,4.85)
-
-
 minetest.register_node("church_altar:altar_middle_stone", {
-  description = "Stone Donation Alter",
-  tiles = {"church_altar_stone_center_top.png", --top
-  "church_altar_stone_center_top.png^[transformFX", --bottom
-  "church_altar_stone_sides.png", --left
-  "church_altar_stone_sides.png", --right
-  "church_altar_stone_center.png^[transformFX",--back
-  "church_altar_stone_center.png"}, --front
-  drawtype = 'nodebox',
-  paramtype = "light",
-  paramtype2 = "facedir",
-  sunlight_propagates = true,
-  is_ground_content = false,
-  groups = {cracky = 3},
+	description = "Stone Donation Alter",
+	tiles = {"church_altar_stone_center_top.png",
+	"church_altar_stone_center_top.png^[transformFX",
+	"church_altar_stone_sides.png",
+	"church_altar_stone_sides.png",
+	"church_altar_stone_center.png^[transformFX",
+	"church_altar_stone_center.png"},
+	drawtype = 'nodebox',
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3},
 	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
-  node_box = {
+	node_box = {
 		type = 'fixed',
 		fixed = {
 			{-0.5, 0.3125, -0.5, 0.5, 0.5, 0.5},
@@ -122,7 +123,6 @@ minetest.register_node("church_altar:altar_middle_stone", {
 			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
 	},
-
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", altar_formspec)
@@ -130,13 +130,11 @@ minetest.register_node("church_altar:altar_middle_stone", {
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8*1)
 	end,
-
 	can_dig = function(pos,player)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
-
 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
 		if not minetest.is_protected(pos, player:get_player_name()) then
 			return 1000
@@ -145,42 +143,38 @@ minetest.register_node("church_altar:altar_middle_stone", {
 		end
 
 	end,
-
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		minetest.log("action", player:get_player_name()..
 		" moves stuff in altar at "..minetest.pos_to_string(pos))
 	end,
-
 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name()..
 		" moves stuff to altar at "..minetest.pos_to_string(pos))
 	end,
-
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name()..
 		" takes stuff from altar at "..minetest.pos_to_string(pos))
 	end,
-
 	on_blast = function() end,
 })
 
 minetest.register_node("church_altar:altar_middle_marble", {
-  description = "Marble Donation Alter",
-  tiles = {"church_altar_marble_center_top.png", --top
-  "church_altar_marble_center_top.png^[transformFX", --bottom
-  "church_altar_marble_sides.png", --left
-  "church_altar_marble_sides.png", --right
-  "church_altar_marble_center.png^[transformFX",--back
-  "church_altar_marble_center.png"}, --front
-  drawtype = 'nodebox',
-  paramtype = "light",
-  paramtype2 = "facedir",
-  sunlight_propagates = true,
-  is_ground_content = false,
-  groups = {cracky = 3},
+	description = "Marble Donation Alter",
+	tiles = {"church_altar_marble_center_top.png",
+	"church_altar_marble_center_top.png^[transformFX",
+	"church_altar_marble_sides.png",
+	"church_altar_marble_sides.png",
+	"church_altar_marble_center.png^[transformFX",
+	"church_altar_marble_center.png"},
+	drawtype = 'nodebox',
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3},
 	on_rotate = screwdriver.rotate_simple,
 	sounds = default.node_sound_stone_defaults(),
-  node_box = {
+	node_box = {
 		type = 'fixed',
 		fixed = {
 			{-0.5, 0.3125, -0.5, 0.5, 0.5, 0.5},
@@ -197,7 +191,6 @@ minetest.register_node("church_altar:altar_middle_marble", {
 			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
 	},
-
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", altar_formspec)
@@ -205,37 +198,30 @@ minetest.register_node("church_altar:altar_middle_marble", {
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8*1)
 	end,
-
 	can_dig = function(pos,player)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
-
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		minetest.log("action", player:get_player_name()..
 		" moves stuff in marble altar at "..minetest.pos_to_string(pos))
 	end,
-
 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
 		if not minetest.is_protected(pos, player:get_player_name()) then
 			return 1000
 		else
 			return 0
 		end
-
 	end,
-
 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name()..
 		" moves stuff to marble altar at "..minetest.pos_to_string(pos))
 	end,
-
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name()..
 		" takes stuff from marble altar at "..minetest.pos_to_string(pos))
 	end,
-
 	on_blast = function() end,
 })
 
@@ -271,7 +257,6 @@ minetest.register_abm({
 -----------------------------
 -- Register Craft Recipes
 -----------------------------
-
 minetest.register_craft({
 	output = 'church_altar:altar_end_stone 2',
 	recipe = {
@@ -293,7 +278,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'church_altar:altar_middle_stone',
 	recipe = {
-  {'', 'stairs:slab_stone', ''},
+		{'', 'stairs:slab_stone', ''},
 		{'', 'group:stone', ''},
 		{'', 'stairs:slab_stone', ''}
 	}
@@ -325,9 +310,3 @@ minetest.register_craft({
 		{'default:coral_skeleton'}
 	}
 })
-
--------------------
--- Register Aliases
--------------------
-minetest.register_alias('church_altar:altar_middle', 'church_altar:altar_middle_stone')
-minetest.register_alias('church_altar:altar_end', 'church_altar:altar_end_stone')
