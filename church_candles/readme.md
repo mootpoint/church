@@ -4,7 +4,7 @@
 
 ##Copyright (C) Lisa Milne 2013 <lisa@ltmnet.com>
 
-modified for  the "Church Modpack" by Napiophelios
+modified for  the "Church Modpack" 
 
 Licensed under GPL2.0 or later,
 
