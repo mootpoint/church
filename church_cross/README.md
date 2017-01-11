@@ -3,8 +3,6 @@
 #Minetest mod "Cross"
 for  the "Church Modpack" by Mootpoint
 
-modified by Napiophelios
-
 Licensed under GPLv3 or later,
 
 see http://www.gnu.org/licenses/gpl-3.0.html
