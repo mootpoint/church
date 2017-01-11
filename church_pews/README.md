@@ -3,8 +3,6 @@
 #Minetest mod "pews" by Mootpoint
 for  the "Church Modpack"
 
-Modified by Napiophelios
-
 Licensed under GPLv3 or later,
 
 see http://www.gnu.org/licenses/gpl-3.0.html
