@@ -1,7 +1,7 @@
 =====================
 
-#Minetest mod "Grave" by Napiophelios
-Modified for  the "Church Modpack" by Mootpoint
+#Minetest mod "Grave" 
+for the "Church Modpack" by Mootpoint
 
 Licensed under GPLv3 or later,
 
