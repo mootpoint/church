@@ -639,7 +639,7 @@ minetest.register_node("church_candles:candle_flame", {
 	pointable = false,
 	sunlight_propagates = true,
 	damage_per_second = 1,
-	groups = {igniter = 3, dig_immediate = 3, not_in_creative_inventory = 1},
+	groups = {torch = 1, dig_immediate = 3, not_in_creative_inventory = 1},
 	drop = "",
 	can_dig = function(pos,player)
 			return false
@@ -668,7 +668,7 @@ minetest.register_node("church_candles:candelabra_flame", {
 	pointable = false,
 	sunlight_propagates = true,
 	damage_per_second = 1,
-	groups = {igniter = 3, dig_immediate = 3, not_in_creative_inventory = 1},
+	groups = {torch = 1, dig_immediate = 3, not_in_creative_inventory = 1},
 	drop = "",
 	can_dig = function(pos,player)
 		return false
