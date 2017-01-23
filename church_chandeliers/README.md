@@ -21,7 +21,7 @@ depends :
 
 =====================
 
-![Preview](https://)
+![Preview](https://raw.githubusercontent.com/Napiophelios/church/church_chandeliers/church_chandeliers/screenshot.png)
 
 
 Textures by Napiophelios
