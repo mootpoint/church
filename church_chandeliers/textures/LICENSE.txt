@@ -1,0 +1,9 @@
+--------------------------------------------
+All textures derived from Castle mod
+License Textures: Philipner -  CC-BY-SA 3.0
+
+-castle_chandelier_chain.png
+-castle_chandelier_flame_animated.png
+-castle_chandelier_wield.png
+
+--------------------------------------------
