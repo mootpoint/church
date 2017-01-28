@@ -77,9 +77,9 @@ minetest.register_node("church_candles:hive_wild", {
 	groups = {snappy = 3, oddly_breakable_by_hand = 2, flammable = 1, not_in_creative_inventory = 1},
     sounds = default.node_sound_leaves_defaults(),
 	drop = {
-		max_items = 1,
+--		max_items = 1,
 		items = {
-			{items = {"church_candles:comb"}, rarity = 5},
+			{items = {"church_candles:comb"}, rarity = 3},
 			{items = {"church_candles:honey 2"}}
 		}
 	},
@@ -208,6 +208,45 @@ minetest.register_node("church_candles:hive_empty", {
 		tmr:start(300)
 	end
 })
+
+minetest.register_node("church_candles:hive_dormant", {
+	description = "Artificial Hive (dormant)",
+    tiles = {"church_hive_empty_top.png","church_hive_empty_bottom.png",
+    "church_hive_empty.png","church_hive_empty.png",
+    "church_hive_empty.png","church_hive_empty_front.png"},
+    drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	on_rotate = screwdriver.rotate_simple,
+    drop = "church_candles:hive_empty",
+	groups = {choppy = 3, oddly_breakable_by_hand = 3, flammable = 3, not_in_creative_inventory = 1},
+	sounds = default.node_sound_wood_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, 0, -0.375, 0.375, 0.5, 0.375},
+			{-0.4375, 0.375, -0.4375, 0.4375, 0.4375, 0.4375},
+			{-0.4375, -0.0625, -0.4375, 0.4375, 0, 0.4375},
+			{-0.4375, -0.5, 0.375, -0.375, 0.4375, 0.4375},
+			{0.375, -0.5, 0.375, 0.4375, 0.4375, 0.4375},
+			{-0.4375, -0.5, -0.375, 0.4375, -0.0625, 0.4375},
+			{-0.4375, -0.5, -0.4375, 0.4375, -0.4375, 0.4375},
+			{-0.4375, -0.5, -0.4375, -0.375, 0.375, -0.375},
+			{0.375, -0.5, -0.4375, 0.4375, 0.4375, -0.375},
+			{-0.125, -0.3125, -0.4375, 0.125, -0.1875, -0.3125},--knob
+		},
+    },
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+	},
+	on_construct = function(pos)
+		local meta = minetest.env:get_meta(pos)
+		meta:set_string("infotext","Bee Hive: Dormant");
+	end
+})
+
 --Busy Bees (adapted from glow mod by bdjnk)
 minetest.register_node("church_candles:busybees", {
 	description = "Busy Bees",
@@ -377,6 +416,44 @@ minetest.register_abm({
 		minetest.env:add_node(pos,{name="church_candles:hive_wild", param2 = 0})
 	end
 })
+
+--seasonal calculation code by Gael de Sailly from the Forest mod
+minetest.register_abm({
+	nodenames = {"church_candles:hive_wild"},
+	interval = 20,
+	chance = 3,
+	action = function(pos)
+        local season = math.floor(math.mod(minetest.get_gametime() + 600 - minetest.get_timeofday() * 1200, 14400) / 1200)
+        if season < 2 or season > 9 then
+                minetest.remove_node(pos, {name = "church_candles:hive_wild"})
+		end
+	end,
+})
+
+minetest.register_abm({
+	nodenames = {"church_candles:hive", "church_candles:hive_empty"},
+	interval = 20,
+	chance = 3,
+	action = function(pos)
+        local season = math.floor(math.mod(minetest.get_gametime() + 600 - minetest.get_timeofday() * 1200, 14400) / 1200)
+        if season < 2 or season > 9 then
+                minetest.set_node(pos, {name = "church_candles:hive_dormant"})
+		end
+	end,
+})
+
+minetest.register_abm({
+	nodenames = {"church_candles:hive_dormant"},
+	interval = 20,
+	chance = 3,
+	action = function(pos)
+        local season = math.floor(math.mod(minetest.get_gametime() + 600 - minetest.get_timeofday() * 1200, 14400) / 1200)
+        if season > 2 or season < 9 then
+                minetest.set_node(pos, {name = "church_candles:hive_empty"})
+		end
+	end,
+})
+
 ----------------
 -- Craft Items
 ----------------
