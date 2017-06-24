@@ -11,6 +11,10 @@ Original Textures by TenPlus1 ???
 License: MIT ???
 - candles_hive_wild.png
 
+Original Textures by Gambit
+License: WTFPL
+- candles_honey.png
+
 --========================
 
 Textures by Napiophelios
@@ -74,7 +78,6 @@ License: CC-BY-SA 3.0
 - candles_hive_layout.png
 - candles_hive_top.png
 - candles_hive_wild.png
-- candles_honey.png
 - candles_honey_bottled.png
 - candles_honey_comb.png
 - candles_honey_comb_block.png

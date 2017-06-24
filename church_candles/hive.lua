@@ -21,15 +21,15 @@ function hive.construct(pos)
 
 	local formspec = [[ size[8,5;]
 			label[0.5,0.03;Bees are busy making honey...]
-			image[7,0;1,1;candles_hive_bee.png]
-            image[6,0;1,1;candles_hive_dandelion.png]
-			image[5,0;1,1;candles_hive_layout.png]
+			image[7,0;1,1;church_candles_hive_bee.png]
+            image[6,0;1,1;church_candles_hive_dandelion.png]
+			image[5,0;1,1;church_candles_hive_layout.png]
 			list[context;honey;5,0;1,1;]
 			list[current_player;main;0,1.35;8,4;] ]]
-            ..default.gui_bg
-            ..default.gui_bg_img
-            ..default.gui_slots
-			..default.get_hotbar_bg(0,1.35)
+	..default.gui_bg
+	..default.gui_bg_img
+	..default.gui_slots
+	..default.get_hotbar_bg(0,1.35)
 
 	meta:set_string("formspec", formspec)
 	meta:set_string("infotext", "Artificial Hive")
