@@ -20,12 +20,12 @@ function hive.construct(pos)
 	local inv = meta:get_inventory()
 
 	local formspec = [[ size[8,5;]
-			label[0.5,0.03;Bees are busy making honey...]
-			image[7,0;1,1;church_candles_hive_bee.png]
-            image[6,0;1,1;church_candles_hive_dandelion.png]
-			image[5,0;1,1;church_candles_hive_layout.png]
-			list[context;honey;5,0;1,1;]
-			list[current_player;main;0,1.35;8,4;] ]]
+	label[0.5,0.03;Bees are busy making honey...]
+	image[7,0;1,1;church_candles_hive_bee.png]
+	image[6,0;1,1;church_candles_hive_dandelion.png]
+	image[5,0;1,1;church_candles_hive_layout.png]
+	list[context;honey;5,0;1,1;]
+	list[current_player;main;0,1.35;8,4;] ]]
 	..default.gui_bg
 	..default.gui_bg_img
 	..default.gui_slots
@@ -105,7 +105,7 @@ minetest.register_node("church_candles:hive", {
 	description = "Artificial Hive",
     tiles = {"church_candles_hive_top.png","church_candles_hive_bottom.png",
     "church_candles_hive.png","church_candles_hive.png",
-    "church_candles_hive.png","church_candles_hive_front.png"},
+    "church_candles_hive.png","church_candles_hive.png"},
     drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -116,16 +116,13 @@ minetest.register_node("church_candles:hive", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.375, 0, -0.375, 0.375, 0.5, 0.375},
+			{-0.4375, -0.5, -0.4375, 0.4375, 0, 0.4375},
+			{-0.375, -0.0625, -0.375, 0.375, 0.5, 0.375},
 			{-0.4375, 0.375, -0.4375, 0.4375, 0.4375, 0.4375},
-			{-0.4375, -0.0625, -0.4375, 0.4375, 0, 0.4375},
-			{-0.4375, -0.5, 0.375, -0.375, 0.4375, 0.4375},
-			{0.375, -0.5, 0.375, 0.4375, 0.4375, 0.4375},
-			{-0.4375, -0.5, -0.375, 0.4375, -0.0625, 0.4375},
-			{-0.4375, -0.5, -0.4375, 0.4375, -0.4375, 0.4375},
-			{-0.4375, -0.5, -0.4375, -0.375, 0.375, -0.375},
-			{0.375, -0.5, -0.4375, 0.4375, 0.4375, -0.375},
-            {-0.125, -0.3125, -0.4375, 0.125, -0.1875, -0.3125},--knob
+			{0.375, 0, -0.4375, 0.4375, 0.4375, -0.375},
+			{-0.4375, 0, -0.4375, -0.375, 0.4375, -0.375},
+			{-0.4375, 0, 0.375, -0.375, 0.4375, 0.4375},
+			{0.375, 0, 0.375, 0.4375, 0.4375, 0.4375},
 		},
     },
 	selection_box = {
@@ -162,7 +159,7 @@ minetest.register_node("church_candles:hive_empty", {
 	description = "Artificial Hive (empty)",
     tiles = {"church_candles_hive_empty_top.png","church_candles_hive_empty_bottom.png",
     "church_candles_hive_empty.png","church_candles_hive_empty.png",
-    "church_candles_hive_empty.png","church_candles_hive_empty_front.png"},
+    "church_candles_hive_empty.png","church_candles_hive_empty.png"},
     drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -173,16 +170,13 @@ minetest.register_node("church_candles:hive_empty", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.375, 0, -0.375, 0.375, 0.5, 0.375},
+			{-0.4375, -0.5, -0.4375, 0.4375, 0, 0.4375},
+			{-0.375, -0.0625, -0.375, 0.375, 0.5, 0.375},
 			{-0.4375, 0.375, -0.4375, 0.4375, 0.4375, 0.4375},
-			{-0.4375, -0.0625, -0.4375, 0.4375, 0, 0.4375},
-			{-0.4375, -0.5, 0.375, -0.375, 0.4375, 0.4375},
-			{0.375, -0.5, 0.375, 0.4375, 0.4375, 0.4375},
-			{-0.4375, -0.5, -0.375, 0.4375, -0.0625, 0.4375},
-			{-0.4375, -0.5, -0.4375, 0.4375, -0.4375, 0.4375},
-			{-0.4375, -0.5, -0.4375, -0.375, 0.375, -0.375},
-			{0.375, -0.5, -0.4375, 0.4375, 0.4375, -0.375},
-   {-0.125, -0.3125, -0.4375, 0.125, -0.1875, -0.3125},--knob
+			{0.375, 0, -0.4375, 0.4375, 0.4375, -0.375},
+			{-0.4375, 0, -0.4375, -0.375, 0.4375, -0.375},
+			{-0.4375, 0, 0.375, -0.375, 0.4375, 0.4375},
+			{0.375, 0, 0.375, 0.4375, 0.4375, 0.4375},
 		},
     },
 	selection_box = {
