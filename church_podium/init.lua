@@ -60,7 +60,7 @@ for _, row in ipairs(podiums.materials) do
 
 	minetest.register_node(":church_podiums:podium_bottom_" ..name, {
 		drawtype = "nodebox",
-		description = desc.." Pew",
+		description = desc.." Podium",
 		inventory_image = "podiums_" ..name.. "_inv.png",
 		--wield_image = "podiums_" ..name.. "_inv.png",
 		tiles = { tiles },
